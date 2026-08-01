@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Matías Balbontín — Contador Auditor, Gestor de Proyectos, Asesor Directivo">
+    <title>Matías Balbontín</title>
+
+    <!--
+        FUENTES TIPOGRÁFICAS (Google Fonts)
+        - Cormorant Garamond: display/titulares — editorial, elegante
+        - Outfit: cuerpo — limpio, moderno
+        - JetBrains Mono: acentos técnicos — etiquetas y datos
+        Para cambiar fuentes: reemplaza los nombres en los @import y en :root
+    -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+    <style>
+        /* ============================================================
+           VARIABLES GLOBALES
+           Cambia colores, fuentes y tamaños desde aquí.
+           Afectan toda la página.
+           ============================================================ */
+        :root {
+            --color-bg:          #F7F5F2;   /* Fondo principal — crema cálido */
+            --color-bg-alt:      #EFECE8;   /* Fondo alternativo — secciones pares */
+            --color-text:        #141414;   /* Texto principal */
+            --color-muted:       #6B6560;   /* Texto secundario / descriptivo */
+            --color-navy:        #1A3C5E;   /* Azul marino — autoridad financiera */
+            --color-terra:       #C4622D;   /* Terracota — acento editorial */
+            --color-border:      #DDDAD5;   /* Líneas y separadores */
+            --color-white:       #FFFFFF;
+
+            --font-display:      'Cormorant Garamond', Georgia, serif;
+            --font-body:         'Outfit', sans-serif;
+            --font-mono:         'JetBrains Mono', monospace;
+
+            --max-width:         1160px;    /* Ancho máximo del contenido */
+            --pad-section:       6rem 2rem; /* Padding vertical/horizontal de secciones */
+        }
+
+        /* ============================================================
+           RESET & BASE
+           ============================================================ */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; font-size: 16px; }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--color-bg);
+            color: var(--color-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Contenedor centrado reutilizable */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Etiqueta pequeña de sección (estilo Swiss) */
+        .section-label {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-terra);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .section-label::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 1px;
+            background: var(--color-terra);
+        }
+
+        /* Título de sección grande */
+        .section-title {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.1;
+            margin-bottom: 3rem;
+        }
+
+        /* Animación fade-in por scroll — JS añade .visible cuando entra al viewport */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(18px);
+            transition: opacity 0.55s ease, transform 0.55s ease;
+        }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+
+        /* ============================================================
+           NAVEGACIÓN
+           Fija arriba. Toggle [ES|EN] a la derecha.
+           Para cambiar ítems de menú: edita las <a> con data-es / data-en.
+           ============================================================ */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            z-index: 100;
+            padding: 1.1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(247, 245, 242, 0.93);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--color-border);
+            transition: box-shadow 0.3s;
+        }
+
+        /* Logo / nombre en la nav */
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--color-text);
+            text-decoration: none;
+            letter-spacing: 0.01em;
+        }
+
+        /* Links de la nav */
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none;
+        }
+        .nav-links a {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--color-terra); }
+
+        /* Botón de idioma */
+        .lang-btn {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            font-weight: 500;
+            letter-spacing: 0.08em;
+            color: var(--color-text);
+            background: none;
+            border: 1.5px solid var(--color-border);
+            border-radius: 3px;
+            padding: 0.3rem 0.7rem;
+            cursor: pointer;
+            transition: border-color 0.2s, color 0.2s;
+        }
+        .lang-btn:hover { border-color: var(--color-terra); color: var(--color-terra); }
+
+
+        /* ============================================================
+           HERO
+           Grid 2 columnas: texto (izquierda) + foto (derecha).
+           En móvil: una columna, foto primero.
+           ============================================================ */
+        #hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 9rem 2rem 5rem;
+        }
+
+        /* Texto pequeño sobre el nombre */
+        .hero-eyebrow {
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--color-terra);
+            margin-bottom: 1.25rem;
+        }
+
+        /* Nombre principal — "Matías" en light, "Balbontín" en bold navy */
+        .hero-name {
+            font-family: var(--font-display);
+            font-size: clamp(3.2rem, 6.5vw, 5.5rem);
+            font-weight: 300;
+            line-height: 1.03;
+            letter-spacing: -0.01em;
+            margin-bottom: 2rem;
+        }
+        .hero-name strong {
+            font-weight: 700;
+            color: var(--color-navy);
+            display: block;
+        }
+
+        /* Lista de roles, uno por línea */
+        .hero-roles {
+            display: flex;
+            flex-direction: column;
+            gap: 0.45rem;
+            margin-bottom: 3rem;
+        }
+        .role-item {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-muted);
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+        }
+        /* Guión terracota delante de cada rol */
+        .role-item::before {
+            content: '—';
+            color: var(--color-terra);
+            font-weight: 300;
+            flex-shrink: 0;
+        }
+
+        /* Botones de acción */
+        .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+        /* Botón primario (relleno) */
+        .btn-primary {
+            display: inline-block;
+            padding: 0.85rem 1.9rem;
+            background: var(--color-navy);
+            color: var(--color-white);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid var(--color-navy);
+            transition: background 0.25s, color 0.25s;
+            cursor: pointer;
+        }
+        .btn-primary:hover { background: transparent; color: var(--color-navy); }
+
+        /* Botón secundario (solo borde) */
+        .btn-secondary {
+            display: inline-block;
+            padding: 0.85rem 1.9rem;
+            background: transparent;
+            color: var(--color-text);
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid var(--color-border);
+            transition: border-color 0.25s;
+        }
+        .btn-secondary:hover { border-color: var(--color-text); }
+
+        /* Columna de imagen del hero */
+        .hero-img-wrap {
+            position: relative;
+            aspect-ratio: 4 / 5;
+            max-height: 580px;
+        }
+        /* Línea decorativa detrás de la imagen */
+        .hero-img-wrap::before {
+            content: '';
+            position: absolute;
+            bottom: -14px; right: -14px;
+            width: 100%; height: 100%;
+            border: 2px solid var(--color-navy);
+            z-index: 0;
+        }
+
+        /* Placeholder hasta que agregues tu foto */
+        .hero-img-placeholder {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            height: 100%;
+            background: var(--color-bg-alt);
+            border: 2px dashed var(--color-border);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            font-family: var(--font-mono);
+            font-size: 0.72rem;
+            letter-spacing: 0.1em;
+            color: var(--color-muted);
+        }
+
+        /*
+            Cuando tengas la foto, reemplaza el <div class="hero-img-placeholder">
+            por: <img src="imagenes/imagen-principal.jpg" alt="Matías Balbontín"
+                      style="position:relative;z-index:1;width:100%;height:100%;object-fit:cover;">
+            Ver: imagenes/IMAGENES.md
+        */
+
+
+        /* ============================================================
+           SOBRE MÍ
+           Grid: número grande decorativo (izquierda) + párrafo editorial (derecha).
+           ============================================================ */
+        #sobre-mi {
+            padding: var(--pad-section);
+            background: var(--color-bg-alt);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 180px 1fr;
+            gap: 5rem;
+            align-items: start;
+        }
+
+        /* "8+" decorativo — representa años de experiencia. Cambia el número aquí. */
+        .about-number {
+            font-family: var(--font-display);
+            font-size: clamp(4.5rem, 9vw, 8rem);
+            font-weight: 700;
+            color: var(--color-border);
+            line-height: 1;
+        }
+        .about-number sup {
+            font-size: 0.42em;
+            color: var(--color-terra);
+            vertical-align: super;
+            font-weight: 600;
+        }
+        .about-sublabel {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-muted);
+            margin-top: 0.4rem;
+        }
+
+        /* Párrafo "sobre mí" — tipografía editorial grande */
+        .about-body {
+            font-family: var(--font-display);
+            font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+            font-weight: 300;
+            line-height: 1.75;
+            color: var(--color-text);
+        }
+        .about-body strong { font-weight: 600; color: var(--color-navy); }
+
+
+        /* ============================================================
+           SERVICIOS
+           Grid de 3 tarjetas separadas por líneas finas (gap de 2px sobre
+           fondo var(--color-border) crea el efecto de línea).
+           Para agregar un servicio: copia un bloque .service-card completo.
+           ============================================================ */
+        #servicios { padding: var(--pad-section); }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--color-border);
+        }
+
+        .service-card {
+            background: var(--color-bg);
+            padding: 2.5rem;
+            transition: background 0.25s, color 0.25s;
+        }
+        /* Hover: fondo navy, todo el texto blanco */
+        .service-card:hover { background: var(--color-navy); }
+        .service-card:hover .service-num,
+        .service-card:hover .service-title,
+        .service-card:hover .service-desc { color: var(--color-white); }
+
+        .service-num {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.18em;
+            color: var(--color-terra);
+            margin-bottom: 1.25rem;
+            transition: color 0.25s;
+        }
+        .service-title {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--color-text);
+            line-height: 1.2;
+            margin-bottom: 0.85rem;
+            transition: color 0.25s;
+        }
+        .service-desc {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--color-muted);
+            line-height: 1.7;
+            transition: color 0.25s;
+        }
+
+
+        /* ============================================================
+           EXPERIENCIA
+           Lista vertical. Sin nombres de empresas — solo lo que se hizo.
+           Cada .exp-item es un período de trabajo.
+           Para agregar uno: copia el bloque .exp-item y edita el contenido.
+           ============================================================ */
+        #experiencia {
+            padding: var(--pad-section);
+            background: var(--color-bg-alt);
+        }
+
+        .exp-list { display: flex; flex-direction: column; }
+
+        .exp-item {
+            display: grid;
+            grid-template-columns: 150px 1fr;
+            gap: 3rem;
+            padding: 2.25rem 0;
+            border-bottom: 1px solid var(--color-border);
+        }
+        .exp-item:first-child { border-top: 1px solid var(--color-border); }
+
+        /* Período (año) en mono terracota */
+        .exp-period {
+            font-family: var(--font-mono);
+            font-size: 0.75rem;
+            letter-spacing: 0.06em;
+            color: var(--color-terra);
+            padding-top: 0.3rem;
+        }
+
+        /* Título del rol (qué se hizo) */
+        .exp-title {
+            font-family: var(--font-display);
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--color-text);
+            margin-bottom: 0.7rem;
+        }
+
+        /* Bullets de actividades */
+        .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
+        .exp-bullets li {
+            font-family: var(--font-body);
+            font-size: 0.88rem;
+            color: var(--color-muted);
+            padding-left: 1.2rem;
+            position: relative;
+            line-height: 1.6;
+        }
+        /* Flecha terracota antes de cada bullet */
+        .exp-bullets li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--color-terra);
+            font-size: 0.8rem;
+        }
+
+
+        /* ============================================================
+           HABILIDADES
+           Tres columnas: Técnicas / Gestión / Idiomas.
+           Para agregar una: añade un <li> en la lista correspondiente.
+           ============================================================ */
+        #habilidades { padding: var(--pad-section); }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 3.5rem;
+        }
+
+        .skills-col-title {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--color-terra);
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid var(--color-border);
+            margin-bottom: 1.25rem;
+        }
+
+        .skills-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+        .skills-list li {
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            color: var(--color-text);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+        }
+        /* Punto navy antes de cada habilidad */
+        .skills-list li::before {
+            content: '';
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: var(--color-navy);
+            flex-shrink: 0;
+        }
+
+
+        /* ============================================================
+           CERTIFICACIONES
+           Grid de tags en fila. Cada .cert-tag es un certificado.
+           Para agregar uno: copia el bloque .cert-tag y edita nombre e institución.
+           ============================================================ */
+        #certificaciones {
+            padding: var(--pad-section);
+            background: var(--color-bg-alt);
+        }
+
+        .certs-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.65rem;
+        }
+
+        .cert-tag {
+            display: flex;
+            align-items: center;
+            gap: 0.55rem;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--color-border);
+            background: var(--color-white);
+            transition: border-color 0.2s, color 0.2s;
+            cursor: default;
+        }
+        .cert-tag:hover { border-color: var(--color-navy); }
+
+        .cert-name {
+            font-family: var(--font-body);
+            font-size: 0.82rem;
+            color: var(--color-text);
+        }
+        /* Institución emisora — más pequeña y en gris */
+        .cert-issuer {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            color: var(--color-muted);
+            letter-spacing: 0.04em;
+            border-left: 1px solid var(--color-border);
+            padding-left: 0.55rem;
+        }
+
+
+        /* ============================================================
+           CONTACTO
+           Grid 2 columnas: headline + datos directos / formulario.
+           Para cambiar email o teléfono: edita los href="" y el texto.
+           ============================================================ */
+        #contacto { padding: var(--pad-section); }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            align-items: start;
+        }
+
+        /* Headline grande del contacto */
+        .contact-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.4rem, 4.5vw, 4rem);
+            font-weight: 300;
+            line-height: 1.1;
+            margin-bottom: 2.5rem;
+        }
+        .contact-headline strong { font-weight: 700; color: var(--color-terra); }
+
+        /* Links directos (email, teléfono, ubicación) */
+        .contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
+        .contact-link {
+            font-family: var(--font-mono);
+            font-size: 0.78rem;
+            letter-spacing: 0.04em;
+            color: var(--color-text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            transition: color 0.2s;
+        }
+        .contact-link:hover { color: var(--color-terra); }
+
+        /* Columna WhatsApp */
+        .whatsapp-col {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .whatsapp-desc {
+            font-family: var(--font-body);
+            font-size: 1rem;
+            color: var(--color-muted);
+            line-height: 1.65;
+            max-width: 340px;
+        }
+
+        /* Botón WhatsApp — verde oficial #25D366 */
+        .btn-whatsapp {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: #25D366;
+            color: #fff;
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border: 2px solid #25D366;
+            transition: background 0.25s, color 0.25s;
+            width: fit-content;
+        }
+        .btn-whatsapp:hover {
+            background: transparent;
+            color: #25D366;
+        }
+
+        /* Botón Cal.com — navy con borde, coherente con la paleta del sitio */
+        .btn-cal {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2rem;
+            background: transparent;
+            color: var(--color-navy);
+            font-family: var(--font-body);
+            font-size: 0.92rem;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-decoration: none;
+            border: 2px solid var(--color-navy);
+            transition: background 0.25s, color 0.25s;
+            width: fit-content;
+        }
+        .btn-cal:hover {
+            background: var(--color-navy);
+            color: var(--color-white);
+        }
+
+
+        /* ============================================================
+           FOOTER
+           Línea final limpia. Año se actualiza con JS.
+           ============================================================ */
+        footer {
+            padding: 1.75rem 2rem;
+            border-top: 1px solid var(--color-border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: var(--max-width);
+            margin: 0 auto;
+        }
+        .footer-text {
+            font-family: var(--font-mono);
+            font-size: 0.7rem;
+            letter-spacing: 0.08em;
+            color: var(--color-muted);
+        }
+
+
+        /* ============================================================
+           RESPONSIVE — Móvil (max 768px)
+           ============================================================ */
+        @media (max-width: 768px) {
+            #hero {
+                grid-template-columns: 1fr;
+                padding: 7rem 1.5rem 4rem;
+                gap: 3rem;
+            }
+            /* Foto primero en móvil */
+            .hero-img-wrap { order: -1; max-height: 380px; }
+
+            .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
+            /* Ocultar número decorativo en pantallas pequeñas */
+            .about-number-col { display: none; }
+
+            .services-grid { grid-template-columns: 1fr; }
+
+            .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
+
+            .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
+
+            .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+
+            /* Ocultar nav links en móvil (sin hamburguesa por ahora) */
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================================
+         NAVEGACIÓN
+         Fija arriba. Para editar los ítems del menú: modifica los <a>.
+         El botón de idioma llama a toggleLang() definido en el JS.
+         ============================================================ -->
+    <nav id="main-nav">
+        <!-- Logo / nombre corto -->
+        <a href="#hero" class="nav-logo">M. Balbontín</a>
+
+        <!-- Links de navegación — data-es / data-en controla el texto por idioma -->
+        <ul class="nav-links">
+            <li><a href="#servicios"      data-es="Servicios"   data-en="Services">Servicios</a></li>
+            <li><a href="#experiencia"    data-es="Experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a href="#habilidades"    data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+            <li><a href="#contacto"       data-es="Contacto"    data-en="Contact">Contacto</a></li>
+        </ul>
+
+        <!-- Botón toggle de idioma -->
+        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ES | EN</button>
+    </nav>
+
+
+    <!-- ============================================================
+         HERO
+         Columna izquierda: nombre + roles + botones.
+         Columna derecha: foto (placeholder hasta agregar imagen).
+         ============================================================ -->
+    <section id="hero">
+
+        <!-- Texto del hero -->
+        <div class="hero-text">
+
+            <!-- Nombre: "Matías" en light, "Balbontín" en bold navy -->
+            <h1 class="hero-name">
+                Matías<strong>Balbontín</strong>
+            </h1>
+
+            <!-- Roles — un elemento por línea.
+                 Para cambiar un rol: edita data-es y data-en del .role-item. -->
+            <div class="hero-roles">
+                <span class="role-item"
+                      data-es="Contador Auditor"
+                      data-en="CPA &amp; Auditor">Contador Auditor</span>
+
+                <span class="role-item"
+                      data-es="Gestor de Proyectos"
+                      data-en="Project Manager">Gestor de Proyectos</span>
+
+                <span class="role-item"
+                      data-es="Asesor Directivo"
+                      data-en="Strategic Advisor">Asesor Directivo</span>
+
+                <span class="role-item"
+                      data-es="Estudiante de Ingeniería Informática"
+                      data-en="Computer Engineering Student">Estudiante de Ingeniería Informática</span>
+            </div>
+
+            <!-- Botones de acción -->
+            <div class="hero-cta">
+                <a href="#contacto" class="btn-primary"
+                   data-es="Conversemos"
+                   data-en="Let's Talk">Conversemos</a>
+
+                <a href="#experiencia" class="btn-secondary"
+                   data-es="Ver trayectoria"
+                   data-en="My Journey">Ver trayectoria</a>
+            </div>
+
+        </div><!-- /hero-text -->
+
+        <!-- Foto (columna derecha) -->
+        <div class="hero-img-wrap">
+            <!--
+                REEMPLAZAR PLACEHOLDER:
+                Cuando tengas tu foto, elimina el <div class="hero-img-placeholder">
+                y pega en su lugar:
+                <img src="imagenes/imagen-principal.jpg"
+                     alt="Matías Balbontín"
+                     style="position:relative;z-index:1;width:100%;height:100%;object-fit:cover;display:block;">
+                Ver especificaciones en: imagenes/IMAGENES.md
+            -->
+            <div class="hero-img-placeholder">
+                <span>[ FOTO ]</span>
+                <span>imagen-principal.jpg</span>
+                <span style="font-size:0.62rem;opacity:0.55;">ratio 4:5 — portrait</span>
+            </div>
+        </div>
+
+    </section><!-- /hero -->
+
+
+    <!-- ============================================================
+         SOBRE MÍ
+         Número decorativo (años de experiencia) + párrafo editorial.
+         Cambia el párrafo en data-es / data-en de .about-body.
+         ============================================================ -->
+    <section id="sobre-mi">
+        <div class="container">
+
+            <p class="section-label"
+               data-es="Sobre mí"
+               data-en="About me">Sobre mí</p>
+
+            <div class="about-grid">
+
+                <!-- Columna izquierda: número decorativo -->
+                <div class="about-number-col">
+                    <div class="about-number">8<sup>+</sup></div>
+                    <p class="about-sublabel"
+                       data-es="años de experiencia"
+                       data-en="years of experience">años de experiencia</p>
+                </div>
+
+                <!-- Columna derecha: párrafo sobre ti.
+                     Edita libremente el texto en data-es y data-en. -->
+                <p class="about-body fade-in"
+                   data-es="Soy Contador Auditor con más de 8 años asesorando finanzas, proyectos y dirección empresarial. Hoy amplío ese perfil hacia la tecnología: estudio Ingeniería Informática combinando <strong>rigor financiero con visión digital</strong> para ayudar a empresas a tomar mejores decisiones."
+                   data-en="I'm a certified CPA with 8+ years advising on finance, projects, and corporate strategy. Today I'm expanding that profile into technology: studying Computer Engineering and combining <strong>financial rigor with digital vision</strong> to help businesses make better decisions.">
+                    Soy Contador Auditor con más de 8 años asesorando finanzas, proyectos y dirección empresarial. Hoy amplío ese perfil hacia la tecnología: estudio Ingeniería Informática combinando <strong>rigor financiero con visión digital</strong> para ayudar a empresas a tomar mejores decisiones.
+                </p>
+
+            </div>
+        </div>
+    </section><!-- /sobre-mi -->
+
+
+    <!-- ============================================================
+         SERVICIOS
+         3 tarjetas. Hover: fondo navy, texto blanco.
+         Para agregar un servicio: copia un bloque <div class="service-card"> y edítalo.
+         ============================================================ -->
+    <section id="servicios">
+        <div class="container">
+
+            <p class="section-label"
+               data-es="Lo que ofrezco"
+               data-en="What I offer">Lo que ofrezco</p>
+
+            <h2 class="section-title"
+                data-es="Servicios"
+                data-en="Services">Servicios</h2>
+
+            <div class="services-grid">
+
+                <!-- Servicio 01 -->
+                <div class="service-card fade-in">
+                    <p class="service-num">01</p>
+                    <h3 class="service-title"
+                        data-es="Asesoría Financiera y Contable"
+                        data-en="Financial &amp; Accounting Advisory">Asesoría Financiera y Contable</h3>
+                    <p class="service-desc"
+                       data-es="Diagnóstico financiero, mitigación de riesgos y profesionalización de PYMEs. Auditoría de procesos contables y tributarios bajo normativa vigente."
+                       data-en="Financial diagnosis, risk mitigation, and PYME professionalization. Audit of accounting and tax processes under current regulations.">
+                        Diagnóstico financiero, mitigación de riesgos y profesionalización de PYMEs. Auditoría de procesos contables y tributarios bajo normativa vigente.
+                    </p>
+                </div>
+
+                <!-- Servicio 02 -->
+                <div class="service-card fade-in">
+                    <p class="service-num">02</p>
+                    <h3 class="service-title"
+                        data-es="Gestión y Dirección de Proyectos"
+                        data-en="Project Management &amp; Direction">Gestión y Dirección de Proyectos</h3>
+                    <p class="service-desc"
+                       data-es="Evaluación de oportunidades de negocio, gestión de cartera de clientes y verificación de protocolos internos. Metodologías ágiles aplicadas."
+                       data-en="Business opportunity assessment, client portfolio management, and internal protocol verification. Applied agile methodologies.">
+                        Evaluación de oportunidades de negocio, gestión de cartera de clientes y verificación de protocolos internos. Metodologías ágiles aplicadas.
+                    </p>
+                </div>
+
+                <!-- Servicio 03 -->
+                <div class="service-card fade-in">
+                    <p class="service-num">03</p>
+                    <h3 class="service-title"
+                        data-es="Transformación Digital e IA"
+                        data-en="Digital Transformation &amp; AI">Transformación Digital e IA</h3>
+                    <p class="service-desc"
+                       data-es="Análisis de datos con Power BI, automatización de procesos y uso estratégico de inteligencia artificial. Integración de plataformas cloud (Azure IoT)."
+                       data-en="Data analysis with Power BI, process automation, and strategic use of AI. Cloud platform integration (Azure IoT).">
+                        Análisis de datos con Power BI, automatización de procesos y uso estratégico de inteligencia artificial. Integración de plataformas cloud (Azure IoT).
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- /servicios -->
+
+
+    <!-- ============================================================
+         EXPERIENCIA
+         Sin nombres de empresa — solo qué se hizo.
+         Para agregar un período: copia un bloque .exp-item completo.
+         ============================================================ -->
+    <section id="experiencia">
+        <div class="container">
+
+            <p class="section-label"
+               data-es="Trayectoria"
+               data-en="Journey">Trayectoria</p>
+
+            <h2 class="section-title"
+                data-es="Experiencia"
+                data-en="Experience">Experiencia</h2>
+
+            <div class="exp-list">
+
+                <!-- Período 0: Emprendimientos / Founder (más reciente, va primero) -->
+                <div class="exp-item fade-in">
+                    <div class="exp-period"
+                         data-es="2022 — Actual"
+                         data-en="2022 — Present">2022 — Actual</div>
+                    <div>
+                        <h3 class="exp-title"
+                            data-es="Fundador &amp; Socio Comercial"
+                            data-en="Founder &amp; Commercial Partner">Fundador &amp; Socio Comercial</h3>
+                        <ul class="exp-bullets">
+                            <li data-es="Fundador de Proaudita.cl — empresa de auditoría y asesoría empresarial"
+                                data-en="Founder of Proaudita.cl — audit and business advisory firm">
+                                Fundador de <strong>Proaudita.cl</strong> — empresa de auditoría y asesoría empresarial</li>
+                            <li data-es="Fundador de FastPOS.cl — software de ventas y control interno para PYMEs"
+                                data-en="Founder of FastPOS.cl — sales and internal control software for SMEs">
+                                Fundador de <strong>FastPOS.cl</strong> — software de ventas y control interno para PYMEs</li>
+                            <li data-es="Creador de FastMarket — plataforma de herramientas para el control interno"
+                                data-en="Creator of FastMarket — internal control tools platform">
+                                Creador de <strong>FastMarket</strong> — plataforma de herramientas para el control interno</li>
+                            <li data-es="Socio comercial de ServicioDTE — empresa de contabilidad y facturación electrónica"
+                                data-en="Commercial partner at ServicioDTE — accounting and e-invoicing company">
+                                Socio comercial de <strong>ServicioDTE</strong> — empresa de contabilidad y facturación electrónica</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Período 1: Asesoría financiera a empresas (2025 — actual) -->
+                <div class="exp-item fade-in">
+                    <div class="exp-period"
+                         data-es="2025 — Actual"
+                         data-en="2025 — Present">2025 — Actual</div>
+                    <div>
+                        <h3 class="exp-title"
+                            data-es="Asesoría Financiera a Empresas"
+                            data-en="Corporate Financial Advisory">Asesoría Financiera a Empresas</h3>
+                        <ul class="exp-bullets">
+                            <li data-es="Asesoría administrativa y financiera a empresas de la región del Maule y Ñuble"
+                                data-en="Administrative and financial advisory to businesses in the Maule and Ñuble regions">
+                                Asesoría administrativa y financiera a empresas de la región del Maule y Ñuble</li>
+                            <li data-es="Mitigación de riesgos financieros y profesionalización de PYMEs"
+                                data-en="Financial risk mitigation and PYME professionalization">
+                                Mitigación de riesgos financieros y profesionalización de PYMEs</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Período 2: Gestión de proyectos (2022 — actual) -->
+                <div class="exp-item fade-in">
+                    <div class="exp-period"
+                         data-es="2022 — Actual"
+                         data-en="2022 — Present">2022 — Actual</div>
+                    <div>
+                        <h3 class="exp-title"
+                            data-es="Gestión de Proyectos y Cartera de Clientes"
+                            data-en="Project &amp; Client Portfolio Management">Gestión de Proyectos y Cartera de Clientes</h3>
+                        <ul class="exp-bullets">
+                            <li data-es="Análisis de oportunidades de negocio y evaluación de propuestas de inversión"
+                                data-en="Business opportunity analysis and investment proposal evaluation">
+                                Análisis de oportunidades de negocio y evaluación de propuestas de inversión</li>
+                            <li data-es="Gestión personalizada de clientes potenciales y en cartera"
+                                data-en="Personalized management of prospect and active client portfolios">
+                                Gestión personalizada de clientes potenciales y en cartera</li>
+                            <li data-es="Verificación de procedimientos, protocolos y normativas internas"
+                                data-en="Verification of internal procedures, protocols, and regulations">
+                                Verificación de procedimientos, protocolos y normativas internas</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Período 3: Dirección financiera (2020 — 2021) -->
+                <div class="exp-item fade-in">
+                    <div class="exp-period"
+                         data-es="2020 — 2021"
+                         data-en="2020 — 2021">2020 — 2021</div>
+                    <div>
+                        <h3 class="exp-title"
+                            data-es="Dirección Financiera y Auditoría de Operaciones"
+                            data-en="Financial Direction &amp; Operations Audit">Dirección Financiera y Auditoría de Operaciones</h3>
+                        <ul class="exp-bullets">
+                            <li data-es="Recaudación de ingresos en el sector comercial interurbano a nivel nacional"
+                                data-en="Revenue collection in the interurban commercial sector at national level">
+                                Recaudación de ingresos en el sector comercial interurbano a nivel nacional</li>
+                            <li data-es="Financiamiento de operaciones y auditoría de transacciones monetarias"
+                                data-en="Operations financing and monetary transaction auditing">
+                                Financiamiento de operaciones y auditoría de transacciones monetarias</li>
+                            <li data-es="Supervisión de múltiples sucursales y equipos a nivel nacional"
+                                data-en="Supervision of multiple branches and teams at national level">
+                                Supervisión de múltiples sucursales y equipos a nivel nacional</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- /experiencia -->
+
+
+    <!-- ============================================================
+         HABILIDADES
+         Tres columnas. Para agregar una habilidad: añade un <li> a la lista.
+         ============================================================ -->
+    <section id="habilidades">
+        <div class="container">
+
+            <p class="section-label"
+               data-es="Competencias"
+               data-en="Competencies">Competencias</p>
+
+            <h2 class="section-title"
+                data-es="Habilidades"
+                data-en="Skills">Habilidades</h2>
+
+            <div class="skills-grid">
+
+                <!-- Columna 1: Habilidades técnicas -->
+                <div class="fade-in">
+                    <h3 class="skills-col-title"
+                        data-es="Técnicas"
+                        data-en="Technical">Técnicas</h3>
+                    <ul class="skills-list">
+                        <li>Python</li>
+                        <li>Power BI</li>
+                        <li data-es="IA Aplicada" data-en="Applied AI">IA Aplicada</li>
+                        <li>Microsoft Azure (IoT / Hub / Edge)</li>
+                        <li>Oracle Database</li>
+                        <li data-es="Metodologías Ágiles (Scrum)" data-en="Agile Methodologies (Scrum)">Metodologías Ágiles (Scrum)</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 2: Gestión y dirección -->
+                <div class="fade-in">
+                    <h3 class="skills-col-title"
+                        data-es="Gestión"
+                        data-en="Management">Gestión</h3>
+                    <ul class="skills-list">
+                        <li data-es="Auditoría Interna ISO 9001" data-en="ISO 9001 Internal Audit">Auditoría Interna ISO 9001</li>
+                        <li data-es="Dirección de Proyectos (PMO)" data-en="Project Direction (PMO)">Dirección de Proyectos (PMO)</li>
+                        <li data-es="Asesoría Estratégica" data-en="Strategic Advisory">Asesoría Estratégica</li>
+                        <li data-es="Liderazgo de Equipos" data-en="Team Leadership">Liderazgo de Equipos</li>
+                        <li data-es="Evaluación de Inversiones" data-en="Investment Evaluation">Evaluación de Inversiones</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Idiomas -->
+                <div class="fade-in">
+                    <h3 class="skills-col-title"
+                        data-es="Idiomas"
+                        data-en="Languages">Idiomas</h3>
+                    <ul class="skills-list">
+                        <li data-es="Español — Nativo" data-en="Spanish — Native">Español — Nativo</li>
+                        <li data-es="Inglés — B1/B2 (MCER)" data-en="English — B1/B2 (CEFR)">Inglés — B1/B2 (MCER)</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- /habilidades -->
+
+
+    <!-- ============================================================
+         CERTIFICACIONES
+         Cada .cert-tag es un certificado.
+         Para agregar uno: copia el bloque y edita .cert-name y .cert-issuer.
+         ============================================================ -->
+    <section id="certificaciones">
+        <div class="container">
+
+            <p class="section-label"
+               data-es="Formación continua"
+               data-en="Continuous Learning">Formación continua</p>
+
+            <h2 class="section-title"
+                data-es="Certificaciones"
+                data-en="Certifications">Certificaciones</h2>
+
+            <div class="certs-wrap">
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name">Agile Explorer</span>
+                    <span class="cert-issuer">IBM SkillsBuild</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name">AI Fluency: Framework &amp; Foundations</span>
+                    <span class="cert-issuer">Anthropic / UCC</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name" data-es="Data Fundamentals" data-en="Data Fundamentals">Data Fundamentals</span>
+                    <span class="cert-issuer">IBM SkillsBuild</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name">Career Management Essentials</span>
+                    <span class="cert-issuer">IBM SkillsBuild</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name">Explore Emerging Tech</span>
+                    <span class="cert-issuer">IBM SkillsBuild</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name" data-es="Fundamentos de Python" data-en="Python Fundamentals">Fundamentos de Python</span>
+                    <span class="cert-issuer">Cisco Networking Academy</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name">Database Foundations</span>
+                    <span class="cert-issuer">Oracle Academy / UNAB</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name">Azure IoT · Hub · Edge</span>
+                    <span class="cert-issuer">Microsoft</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name" data-es="Dirección y Gestión de Proyectos" data-en="Project Direction &amp; Management">Dirección y Gestión de Proyectos</span>
+                    <span class="cert-issuer">UNC / edX</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name" data-es="Auditorías Internas NCh-ISO 9001:2015" data-en="NCh-ISO 9001:2015 Internal Audits">Auditorías Internas NCh-ISO 9001:2015</span>
+                    <span class="cert-issuer">INN Chile</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name" data-es="Inglés Intermedio B1-B2" data-en="Intermediate English B1-B2">Inglés Intermedio B1-B2</span>
+                    <span class="cert-issuer">Instituto Chileno Norteamericano</span>
+                </div>
+
+                <div class="cert-tag fade-in">
+                    <span class="cert-name" data-es="Gestión de Transformación Digital" data-en="Digital Transformation Management">Gestión de Transformación Digital</span>
+                    <span class="cert-issuer">UNAB — Jun 2025</span>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- /certificaciones -->
+
+
+    <!-- ============================================================
+         CONTACTO
+         Izquierda: headline + email/teléfono.
+         Derecha: formulario (solo front-end — sin backend por ahora).
+         Para envío real: reemplaza handleFormSubmit() con un fetch() a tu endpoint.
+         ============================================================ -->
+    <section id="contacto">
+        <div class="container">
+
+            <div class="contact-grid">
+
+                <!-- Columna izquierda: headline + datos directos -->
+                <div>
+                    <p class="section-label"
+                       data-es="Contáctame"
+                       data-en="Get in touch">Contáctame</p>
+
+                    <!--
+                        Headline del contacto.
+                        Cambia las palabras editando data-es / data-en de cada <span>.
+                    -->
+                    <h2 class="contact-headline">
+                        <span data-es="¿Tienes un" data-en="Have a">¿Tienes un</span><br>
+                        <strong data-es="proyecto?" data-en="project?">proyecto?</strong><br>
+                        <span data-es="Hablemos." data-en="Let's talk.">Hablemos.</span>
+                    </h2>
+
+                    <!-- Datos de contacto directo
+                         Para cambiar: edita href="" y el texto visible. -->
+                    <div class="contact-links">
+                        <a href="mailto:matiasrbalbontin@gmail.com" class="contact-link">
+                            ✉&nbsp; matiasrbalbontin@gmail.com
+                        </a>
+                        <a href="tel:+56994388261" class="contact-link">
+                            ✆&nbsp; +569 9438 8261
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna derecha: botón WhatsApp -->
+                <div class="whatsapp-col">
+                    <p class="whatsapp-desc"
+                       data-es="La forma más rápida de contactarme. Escríbeme directamente por WhatsApp."
+                       data-en="The fastest way to reach me. Message me directly on WhatsApp.">
+                        La forma más rápida de contactarme. Escríbeme directamente por WhatsApp.
+                    </p>
+                    <!--
+                        Botón WhatsApp — el link abre una conversación directa.
+                        Para cambiar el mensaje predefinido: edita el parámetro "text=" en el href.
+                        Para cambiar el número: reemplaza 56994388261 por el nuevo (sin + ni espacios).
+                    -->
+                    <!-- Botones de contacto: WhatsApp + Agendar reunión -->
+                    <div style="display:flex; flex-direction:column; gap:0.75rem; align-items:flex-start;">
+
+                        <!-- WhatsApp -->
+                        <a href="https://wa.me/56994388261?text=Hola%20Mat%C3%ADas%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20conversar."
+                           class="btn-whatsapp"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            <span data-es="Escribir por WhatsApp" data-en="Message on WhatsApp">Escribir por WhatsApp</span>
+                        </a>
+
+                        <!--
+                            Botón Cal.com — abre el calendario de agendamiento.
+                            Para cambiar la URL: edita el href.
+                        -->
+                        <a href="https://cal.com/matiasbalbontin"
+                           class="btn-cal"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                                <line x1="16" y1="2" x2="16" y2="6"/>
+                                <line x1="8" y1="2" x2="8" y2="6"/>
+                                <line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                            <span data-es="Agendar una reunión" data-en="Schedule a meeting">Agendar una reunión</span>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- /contacto -->
+
+
+    <!-- ============================================================
+         FOOTER
+         ============================================================ -->
+    <footer>
+        <span class="footer-text">
+            © <span id="footer-year">2026</span> Matías Balbontín
+        </span>
+        <span class="footer-text"
+              data-es="Diseñado &amp; desarrollado con propósito"
+              data-en="Designed &amp; built with purpose">
+            Diseñado &amp; desarrollado con propósito
+        </span>
+    </footer>
+
+
+    <!-- ============================================================
+         JAVASCRIPT
+         Tres funciones:
+         1. toggleLang()       — cambia ES ↔ EN en toda la página
+         2. initScrollFade()   — anima .fade-in al hacer scroll
+         3. handleFormSubmit() — muestra mensaje de éxito del form
+         ============================================================ -->
+    <script>
+        /* ----------------------------------------------------------
+           IDIOMA ACTIVO — 'es' o 'en'
+           No editar directamente; usar el botón EN | ES de la página.
+           ---------------------------------------------------------- */
+        let currentLang = 'es';
+
+        /* ----------------------------------------------------------
+           toggleLang()
+           Recorre todos los elementos con atributos data-es y data-en,
+           y actualiza su innerHTML con el texto del idioma activo.
+           Para hacer un nuevo elemento bilingüe: agrega
+           data-es="texto español" data-en="english text" al elemento.
+           ---------------------------------------------------------- */
+        function toggleLang() {
+            // Alterna entre 'es' y 'en'
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+
+            // Actualiza el atributo lang del <html> (accesibilidad)
+            document.documentElement.lang = currentLang;
+
+            // Actualiza el texto del botón de idioma
+            document.getElementById('lang-btn').textContent =
+                currentLang === 'es' ? 'ES | EN' : 'EN | ES';
+
+            // Actualiza todos los elementos bilingües de la página
+            document.querySelectorAll('[data-es][data-en]').forEach(el => {
+                const texto = el.getAttribute('data-' + currentLang);
+                if (texto !== null) el.innerHTML = texto;
+            });
+        }
+
+        /* ----------------------------------------------------------
+           initScrollFade()
+           Usa IntersectionObserver para detectar cuándo un elemento
+           con clase .fade-in entra en el viewport y lo hace visible.
+           El delay escalonado (i * 80ms) crea efecto cascada en grupos.
+           ---------------------------------------------------------- */
+        function initScrollFade() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        setTimeout(() => {
+                            entry.target.classList.add('visible');
+                        }, i * 80); // Retraso progresivo por elemento
+                        observer.unobserve(entry.target); // Solo se anima una vez
+                    }
+                });
+            }, {
+                threshold: 0.08,              // Entra al 8% de visibilidad
+                rootMargin: '0px 0px -40px 0px' // Margen inferior para adelantar
+            });
+
+            // Observa todos los elementos con .fade-in
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+        }
+
+        /* ----------------------------------------------------------
+           INICIALIZACIÓN — se ejecuta cuando el DOM está listo
+           ---------------------------------------------------------- */
+        document.addEventListener('DOMContentLoaded', () => {
+            // Año dinámico en el footer
+            document.getElementById('footer-year').textContent =
+                new Date().getFullYear();
+
+            // Activar animaciones de scroll
+            initScrollFade();
+        });
+
+        /* ----------------------------------------------------------
+           Efecto nav al hacer scroll: agrega sombra sutil
+           ---------------------------------------------------------- */
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('main-nav');
+            if (window.scrollY > 30) {
+                nav.style.boxShadow = '0 2px 24px rgba(0,0,0,0.07)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+        });
+    </script>
+
+</body>
+</html>
