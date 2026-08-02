@@ -94,13 +94,43 @@
             margin-bottom: 3rem;
         }
 
-        /* Animación fade-in por scroll — JS añade .visible cuando entra al viewport */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(18px);
-            transition: opacity 0.55s ease, transform 0.55s ease;
+        /* ============================================================
+           CURSOR PERSONALIZADO
+           ============================================================ */
+        body { cursor: none; }
+
+        #cursor {
+            position: fixed;
+            top: 0; left: 0;
+            width: 22px; height: 22px;
+            border-radius: 50%;
+            border: 1.5px solid var(--color-navy);
+            background: transparent;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            transition: width 0.25s ease, height 0.25s ease,
+                        background 0.25s ease, border-color 0.25s ease,
+                        opacity 0.25s ease;
         }
-        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        #cursor.is-hovering {
+            width: 48px; height: 48px;
+            background: var(--color-navy);
+            border-color: var(--color-navy);
+            mix-blend-mode: difference;
+        }
+        #cursor.is-hovering-hero-name {
+            width: 90px; height: 90px;
+            background: rgba(26, 60, 94, 0.15);
+            border: none;
+        }
+        #cursor.is-clicking {
+            transform: translate(-50%, -50%) scale(0.82);
+        }
+        @media (hover: none) {
+            #cursor { display: none; }
+            body { cursor: auto; }
+        }
 
 
         /* ============================================================
@@ -719,6 +749,8 @@
          Fija arriba. Para editar los ítems del menú: modifica los <a>.
          El botón de idioma llama a toggleLang() definido en el JS.
          ============================================================ -->
+    <div id="cursor" aria-hidden="true"></div>
+
     <nav id="main-nav">
         <!-- Logo / nombre corto -->
         <a href="#hero" class="nav-logo">M. Balbontín</a>
@@ -1278,6 +1310,48 @@
         gsap.registerPlugin(ScrollTrigger);
 
         /* ----------------------------------------------------------
+           CURSOR PERSONALIZADO
+           ---------------------------------------------------------- */
+        function initCursor() {
+            const cursor = document.getElementById('cursor');
+            if (!cursor || window.matchMedia('(hover: none)').matches) return;
+
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+            let curX = mouseX;
+            let curY = mouseY;
+            const LERP = 0.12;
+
+            window.addEventListener('mousemove', e => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            gsap.ticker.add(() => {
+                curX += (mouseX - curX) * LERP;
+                curY += (mouseY - curY) * LERP;
+                gsap.set(cursor, { x: curX, y: curY });
+            });
+
+            document.querySelectorAll('a, button').forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('is-hovering'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering'));
+            });
+
+            const heroName = document.querySelector('.hero-name');
+            if (heroName) {
+                heroName.addEventListener('mouseenter', () => {
+                    cursor.classList.remove('is-hovering');
+                    cursor.classList.add('is-hovering-hero-name');
+                });
+                heroName.addEventListener('mouseleave', () => cursor.classList.remove('is-hovering-hero-name'));
+            }
+
+            document.addEventListener('mousedown', () => cursor.classList.add('is-clicking'));
+            document.addEventListener('mouseup',   () => cursor.classList.remove('is-clicking'));
+        }
+
+        /* ----------------------------------------------------------
            IDIOMA ACTIVO — 'es' o 'en'
            No editar directamente; usar el botón EN | ES de la página.
            ---------------------------------------------------------- */
@@ -1337,12 +1411,8 @@
            INICIALIZACIÓN — se ejecuta cuando el DOM está listo
            ---------------------------------------------------------- */
         document.addEventListener('DOMContentLoaded', () => {
-            // Año dinámico en el footer
-            document.getElementById('footer-year').textContent =
-                new Date().getFullYear();
-
-            // Activar animaciones de scroll
-            initScrollFade();
+            document.getElementById('footer-year').textContent = new Date().getFullYear();
+            initCursor();
         });
 
         /* ----------------------------------------------------------
