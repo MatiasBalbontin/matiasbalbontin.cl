@@ -371,54 +371,61 @@
 
 
         /* ============================================================
-           SERVICIOS
-           Grid de 3 tarjetas separadas por líneas finas (gap de 2px sobre
-           fondo var(--color-border) crea el efecto de línea).
-           Para agregar un servicio: copia un bloque .service-card completo.
+           SERVICIOS — Filas horizontales
            ============================================================ */
         #servicios { padding: var(--pad-section); }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2px;
-            background: var(--color-border);
-        }
+        .services-list { border-top: 1px solid var(--color-border); }
 
-        .service-card {
-            background: var(--color-bg);
-            padding: 2.5rem;
-            transition: background 0.25s, color 0.25s;
+        .service-row {
+            display: grid;
+            grid-template-columns: 60px 1fr 32px;
+            grid-template-rows: 80px auto;
+            align-items: center;
+            gap: 0 2rem;
+            padding: 0 1rem;
+            overflow: hidden;
+            border-bottom: 1px solid var(--color-border);
+            cursor: pointer;
+            height: 80px;
         }
-        /* Hover: fondo navy, todo el texto blanco */
-        .service-card:hover { background: var(--color-navy); }
-        .service-card:hover .service-num,
-        .service-card:hover .service-title,
-        .service-card:hover .service-desc { color: var(--color-white); }
 
         .service-num {
             font-family: var(--font-mono);
             font-size: 0.7rem;
             letter-spacing: 0.18em;
             color: var(--color-terra);
-            margin-bottom: 1.25rem;
-            transition: color 0.25s;
+            grid-row: 1;
         }
-        .service-title {
+
+        .service-row .service-title {
             font-family: var(--font-display);
-            font-size: 1.5rem;
+            font-size: clamp(1.2rem, 2.5vw, 1.75rem);
             font-weight: 600;
             color: var(--color-text);
-            line-height: 1.2;
-            margin-bottom: 0.85rem;
-            transition: color 0.25s;
+            line-height: 1.1;
+            grid-row: 1;
+            margin-bottom: 0;
         }
-        .service-desc {
+
+        .service-arrow {
+            font-size: 1.3rem;
+            color: var(--color-terra);
+            display: inline-block;
+            grid-row: 1;
+            justify-self: end;
+        }
+
+        .service-row .service-desc {
             font-family: var(--font-body);
             font-size: 0.88rem;
             color: var(--color-muted);
-            line-height: 1.7;
-            transition: color 0.25s;
+            line-height: 1.65;
+            grid-column: 2;
+            grid-row: 2;
+            padding-bottom: 1.25rem;
+            visibility: hidden;
+            opacity: 0;
         }
 
 
@@ -804,27 +811,16 @@
     </section><!-- /sobre-mi -->
 
 
-    <!-- ============================================================
-         SERVICIOS
-         3 tarjetas. Hover: fondo navy, texto blanco.
-         Para agregar un servicio: copia un bloque <div class="service-card"> y edítalo.
-         ============================================================ -->
     <section id="servicios">
         <div class="container">
 
-            <p class="section-label"
-               data-es="Lo que ofrezco"
-               data-en="What I offer">Lo que ofrezco</p>
+            <p class="section-label" data-es="Lo que ofrezco" data-en="What I offer">Lo que ofrezco</p>
+            <h2 class="section-title" data-es="Servicios" data-en="Services">Servicios</h2>
 
-            <h2 class="section-title"
-                data-es="Servicios"
-                data-en="Services">Servicios</h2>
+            <div class="services-list">
 
-            <div class="services-grid">
-
-                <!-- Servicio 01 -->
-                <div class="service-card fade-in">
-                    <p class="service-num">01</p>
+                <div class="service-row">
+                    <span class="service-num">01</span>
                     <h3 class="service-title"
                         data-es="Asesoría Financiera y Contable"
                         data-en="Financial &amp; Accounting Advisory">Asesoría Financiera y Contable</h3>
@@ -833,11 +829,11 @@
                        data-en="Financial diagnosis, risk mitigation, and PYME professionalization. Audit of accounting and tax processes under current regulations.">
                         Diagnóstico financiero, mitigación de riesgos y profesionalización de PYMEs. Auditoría de procesos contables y tributarios bajo normativa vigente.
                     </p>
+                    <span class="service-arrow" aria-hidden="true">→</span>
                 </div>
 
-                <!-- Servicio 02 -->
-                <div class="service-card fade-in">
-                    <p class="service-num">02</p>
+                <div class="service-row">
+                    <span class="service-num">02</span>
                     <h3 class="service-title"
                         data-es="Gestión y Dirección de Proyectos"
                         data-en="Project Management &amp; Direction">Gestión y Dirección de Proyectos</h3>
@@ -846,11 +842,11 @@
                        data-en="Business opportunity assessment, client portfolio management, and internal protocol verification. Applied agile methodologies.">
                         Evaluación de oportunidades de negocio, gestión de cartera de clientes y verificación de protocolos internos. Metodologías ágiles aplicadas.
                     </p>
+                    <span class="service-arrow" aria-hidden="true">→</span>
                 </div>
 
-                <!-- Servicio 03 -->
-                <div class="service-card fade-in">
-                    <p class="service-num">03</p>
+                <div class="service-row">
+                    <span class="service-num">03</span>
                     <h3 class="service-title"
                         data-es="Transformación Digital e IA"
                         data-en="Digital Transformation &amp; AI">Transformación Digital e IA</h3>
@@ -859,11 +855,12 @@
                        data-en="Data analysis with Power BI, process automation, and strategic use of AI. Cloud platform integration (Azure IoT).">
                         Análisis de datos con Power BI, automatización de procesos y uso estratégico de inteligencia artificial. Integración de plataformas cloud (Azure IoT).
                     </p>
+                    <span class="service-arrow" aria-hidden="true">→</span>
                 </div>
 
             </div>
         </div>
-    </section><!-- /servicios -->
+    </section>
 
 
     <!-- ============================================================
@@ -1308,6 +1305,45 @@
         }
 
         /* ----------------------------------------------------------
+           SERVICIOS — Hover expansivo
+           ---------------------------------------------------------- */
+        function initServiciosHover() {
+            const rows = document.querySelectorAll('.service-row');
+            const EXPANDED = 200;
+            const COLLAPSED = 80;
+
+            rows.forEach(row => {
+                const num   = row.querySelector('.service-num');
+                const title = row.querySelector('.service-title');
+                const desc  = row.querySelector('.service-desc');
+                const arrow = row.querySelector('.service-arrow');
+
+                row.addEventListener('mouseenter', () => {
+                    gsap.to(row,   { height: EXPANDED, backgroundColor: '#1A3C5E', duration: 0.4, ease: 'power2.out' });
+                    gsap.to([num, title, arrow], { color: '#FFFFFF', duration: 0.3 });
+                    gsap.set(desc, { visibility: 'visible' });
+                    gsap.to(desc,  { autoAlpha: 1, y: 0, duration: 0.35, ease: 'power2.out' });
+                    gsap.to(arrow, { rotation: 45, duration: 0.3, ease: 'power2.out' });
+                    rows.forEach(o => { if (o !== row) gsap.to(o, { opacity: 0.4, duration: 0.3 }); });
+                });
+
+                row.addEventListener('mouseleave', () => {
+                    gsap.to(row,   { height: COLLAPSED, backgroundColor: 'transparent', duration: 0.4, ease: 'power2.out' });
+                    gsap.to(num,   { color: '#C4622D', duration: 0.3 });
+                    gsap.to(title, { color: '#141414', duration: 0.3 });
+                    gsap.to(arrow, { color: '#C4622D', rotation: 0, duration: 0.3 });
+                    gsap.to(desc,  { autoAlpha: 0, duration: 0.2 });
+                    rows.forEach(o => gsap.to(o, { opacity: 1, duration: 0.3 }));
+                });
+            });
+
+            gsap.from('.service-row', {
+                y: 30, autoAlpha: 0, stagger: 0.1, duration: 0.6, ease: 'power2.out',
+                scrollTrigger: { trigger: '.services-list', start: 'top 82%', once: true }
+            });
+        }
+
+        /* ----------------------------------------------------------
            IDIOMA ACTIVO — 'es' o 'en'
            No editar directamente; usar el botón EN | ES de la página.
            ---------------------------------------------------------- */
@@ -1370,6 +1406,7 @@
             document.getElementById('footer-year').textContent = new Date().getFullYear();
             initHeroAnimation();
             initCursor();
+            initServiciosHover();
         });
 
         /* ----------------------------------------------------------
