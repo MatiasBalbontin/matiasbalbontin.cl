@@ -1362,7 +1362,7 @@
 
                 row.addEventListener('mouseenter', () => {
                     gsap.to(row,   { height: EXPANDED, backgroundColor: '#1A3C5E', duration: 0.4, ease: 'power2.out' });
-                    gsap.to([num, title, arrow], { color: '#FFFFFF', duration: 0.3 });
+                    gsap.to([num, title, arrow, desc], { color: '#FFFFFF', duration: 0.3 });
                     gsap.set(desc, { visibility: 'visible' });
                     gsap.to(desc,  { autoAlpha: 1, y: 0, duration: 0.35, ease: 'power2.out' });
                     gsap.to(arrow, { rotation: 45, duration: 0.3, ease: 'power2.out' });
@@ -1374,7 +1374,7 @@
                     gsap.to(num,   { color: '#C4622D', duration: 0.3 });
                     gsap.to(title, { color: '#141414', duration: 0.3 });
                     gsap.to(arrow, { color: '#C4622D', rotation: 0, duration: 0.3 });
-                    gsap.to(desc,  { autoAlpha: 0, duration: 0.2 });
+                    gsap.to(desc,  { autoAlpha: 0, color: '#6B6560', duration: 0.2 });
                     rows.forEach(o => gsap.to(o, { opacity: 1, duration: 0.3 }));
                 });
             });
