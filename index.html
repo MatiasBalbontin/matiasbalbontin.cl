@@ -331,9 +331,29 @@
 
         .about-grid {
             display: grid;
-            grid-template-columns: 180px 1fr;
-            gap: 5rem;
+            grid-template-columns: 140px 1fr 320px;
+            gap: 4rem;
             align-items: start;
+        }
+
+        .about-photo-wrap {
+            aspect-ratio: 4 / 5;
+            overflow: hidden;
+            clip-path: inset(100% 0% 0% 0%);
+        }
+
+        .about-photo-wrap img {
+            width: 100%; height: 100%;
+            object-fit: cover; display: block;
+        }
+
+        .about-photo-placeholder {
+            width: 100%; height: 100%; min-height: 280px;
+            background: var(--color-bg-alt);
+            border: 2px dashed var(--color-border);
+            display: flex; align-items: center; justify-content: center;
+            font-family: var(--font-mono); font-size: 0.7rem;
+            color: var(--color-muted); letter-spacing: 0.1em;
         }
 
         /* "8+" decorativo — representa años de experiencia. Cambia el número aquí. */
@@ -798,17 +818,20 @@
                        data-en="years of experience">años de experiencia</p>
                 </div>
 
-                <!-- Columna derecha: párrafo sobre ti.
-                     Edita libremente el texto en data-es y data-en. -->
                 <p class="about-body"
                    data-es="Soy Contador Auditor con más de 8 años asesorando finanzas, proyectos y dirección empresarial. Hoy amplío ese perfil hacia la tecnología: estudio Ingeniería Informática combinando <strong>rigor financiero con visión digital</strong> para ayudar a empresas a tomar mejores decisiones."
                    data-en="I'm a certified CPA with 8+ years advising on finance, projects, and corporate strategy. Today I'm expanding that profile into technology: studying Computer Engineering and combining <strong>financial rigor with digital vision</strong> to help businesses make better decisions.">
                     Soy Contador Auditor con más de 8 años asesorando finanzas, proyectos y dirección empresarial. Hoy amplío ese perfil hacia la tecnología: estudio Ingeniería Informática combinando <strong>rigor financiero con visión digital</strong> para ayudar a empresas a tomar mejores decisiones.
                 </p>
 
+                <!-- Columna foto — reemplazar placeholder cuando tengas imagen-principal.jpg -->
+                <div class="about-photo-wrap">
+                    <div class="about-photo-placeholder">[ FOTO ]</div>
+                </div>
+
             </div>
         </div>
-    </section><!-- /sobre-mi -->
+    </section>
 
 
     <section id="servicios">
@@ -1455,6 +1478,12 @@
             gsap.from('.whatsapp-col', {
                 y: 20, autoAlpha: 0, duration: 0.6, ease: 'power2.out',
                 scrollTrigger: { trigger: '.whatsapp-col', start: 'top 82%', once: true }
+            });
+
+            gsap.to('.about-photo-wrap', {
+                clipPath: 'inset(0% 0% 0% 0%)',
+                duration: 0.9, ease: 'power3.out',
+                scrollTrigger: { trigger: '.about-photo-wrap', start: 'top 82%', once: true }
             });
         }
 
