@@ -721,27 +721,46 @@
            RESPONSIVE — Móvil (max 768px)
            ============================================================ */
         @media (max-width: 768px) {
+
+            /* Hero */
             #hero {
-                grid-template-columns: 1fr;
-                padding: 7rem 1.5rem 4rem;
-                gap: 3rem;
+                padding: 7rem 1.5rem 5rem;
+                min-height: 100dvh;
             }
-            /* Foto primero en móvil */
-            .hero-img-wrap { order: -1; max-height: 380px; }
+            .hero-name {
+                font-size: clamp(3.2rem, 15vw, 5.5rem);
+                margin-bottom: 2rem;
+            }
+            .hero-roles {
+                flex-direction: column;
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+            .scroll-indicator { display: none; }
 
+            /* Sobre mí */
             .about-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            /* Ocultar número decorativo en pantallas pequeñas */
             .about-number-col { display: none; }
+            .about-photo-wrap { display: none; }
 
-            .services-grid { grid-template-columns: 1fr; }
+            /* Servicios */
+            .service-row {
+                grid-template-columns: 40px 1fr 24px;
+                gap: 0 1rem;
+                padding: 0 0.5rem;
+            }
+            .service-row .service-title { font-size: 1.05rem; }
 
+            /* Experiencia */
             .exp-item { grid-template-columns: 1fr; gap: 0.5rem; }
 
+            /* Habilidades */
             .skills-grid { grid-template-columns: 1fr; gap: 2rem; }
 
+            /* Contacto */
             .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
 
-            /* Ocultar nav links en móvil (sin hamburguesa por ahora) */
+            /* Nav */
             .nav-links { display: none; }
         }
     </style>
