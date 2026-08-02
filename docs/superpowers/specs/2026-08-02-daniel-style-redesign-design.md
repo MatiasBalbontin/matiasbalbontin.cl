@@ -7,6 +7,25 @@ metadata:
 
 # Rediseño de Interacciones — Estilo Daniel Stoopendaal
 
+## Tipografías nuevas
+
+| Rol | Fuente | Uso |
+|---|---|---|
+| Display / Titulares | **Fraunces** (variable, ital, wght 300–900) | Hero name, section titles |
+| Cuerpo | **Space Grotesk** (wght 300–700) | Párrafos, roles, descripciones |
+| Acento / Mono | **Space Mono** (400, 700) | Etiquetas, fechas, numeración, labels |
+
+**Variables CSS actualizadas:**
+```css
+--font-display: 'Fraunces', Georgia, serif;
+--font-body:    'Space Grotesk', sans-serif;
+--font-mono:    'Space Mono', monospace;
+```
+
+Reemplaza completamente Cormorant Garamond, Outfit y JetBrains Mono en todo el sitio.
+
+---
+
 ## Contexto
 
 **Sitio actual:** `index.html` único, HTML/CSS/JS vanilla, paleta crema/navy/terracota, tipografía Cormorant Garamond + Outfit + JetBrains Mono. Sin framework, sin build tools.
@@ -147,7 +166,7 @@ La imagen se integra en "Sobre Mí" con reveal de ScrollTrigger:
 ## 6. Lo que NO cambia
 
 - Paleta de colores (todas las variables CSS actuales)
-- Tipografías (Cormorant Garamond, Outfit, JetBrains Mono)
+- ~~Tipografías~~ (cambian — ver abajo)
 - Toggle ES/EN (`toggleLang()`)
 - HTML interno de: **Experiencia, Habilidades, Certificaciones, Contacto, Footer** (Sobre Mí sí cambia — agrega columna de foto, ver sección 5)
 - Sistema de `data-es` / `data-en` para i18n
