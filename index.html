@@ -800,7 +800,7 @@
 
                 <!-- Columna derecha: párrafo sobre ti.
                      Edita libremente el texto en data-es y data-en. -->
-                <p class="about-body fade-in"
+                <p class="about-body"
                    data-es="Soy Contador Auditor con más de 8 años asesorando finanzas, proyectos y dirección empresarial. Hoy amplío ese perfil hacia la tecnología: estudio Ingeniería Informática combinando <strong>rigor financiero con visión digital</strong> para ayudar a empresas a tomar mejores decisiones."
                    data-en="I'm a certified CPA with 8+ years advising on finance, projects, and corporate strategy. Today I'm expanding that profile into technology: studying Computer Engineering and combining <strong>financial rigor with digital vision</strong> to help businesses make better decisions.">
                     Soy Contador Auditor con más de 8 años asesorando finanzas, proyectos y dirección empresarial. Hoy amplío ese perfil hacia la tecnología: estudio Ingeniería Informática combinando <strong>rigor financiero con visión digital</strong> para ayudar a empresas a tomar mejores decisiones.
@@ -882,7 +882,7 @@
             <div class="exp-list">
 
                 <!-- Período 0: Emprendimientos / Founder (más reciente, va primero) -->
-                <div class="exp-item fade-in">
+                <div class="exp-item">
                     <div class="exp-period"
                          data-es="2022 — Actual"
                          data-en="2022 — Present">2022 — Actual</div>
@@ -908,7 +908,7 @@
                 </div>
 
                 <!-- Período 1: Asesoría financiera a empresas (2025 — actual) -->
-                <div class="exp-item fade-in">
+                <div class="exp-item">
                     <div class="exp-period"
                          data-es="2025 — Actual"
                          data-en="2025 — Present">2025 — Actual</div>
@@ -928,7 +928,7 @@
                 </div>
 
                 <!-- Período 2: Gestión de proyectos (2022 — actual) -->
-                <div class="exp-item fade-in">
+                <div class="exp-item">
                     <div class="exp-period"
                          data-es="2022 — Actual"
                          data-en="2022 — Present">2022 — Actual</div>
@@ -951,7 +951,7 @@
                 </div>
 
                 <!-- Período 3: Dirección financiera (2020 — 2021) -->
-                <div class="exp-item fade-in">
+                <div class="exp-item">
                     <div class="exp-period"
                          data-es="2020 — 2021"
                          data-en="2020 — 2021">2020 — 2021</div>
@@ -1058,62 +1058,62 @@
 
             <div class="certs-wrap">
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name">Agile Explorer</span>
                     <span class="cert-issuer">IBM SkillsBuild</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name">AI Fluency: Framework &amp; Foundations</span>
                     <span class="cert-issuer">Anthropic / UCC</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name" data-es="Data Fundamentals" data-en="Data Fundamentals">Data Fundamentals</span>
                     <span class="cert-issuer">IBM SkillsBuild</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name">Career Management Essentials</span>
                     <span class="cert-issuer">IBM SkillsBuild</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name">Explore Emerging Tech</span>
                     <span class="cert-issuer">IBM SkillsBuild</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name" data-es="Fundamentos de Python" data-en="Python Fundamentals">Fundamentos de Python</span>
                     <span class="cert-issuer">Cisco Networking Academy</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name">Database Foundations</span>
                     <span class="cert-issuer">Oracle Academy / UNAB</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name">Azure IoT · Hub · Edge</span>
                     <span class="cert-issuer">Microsoft</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name" data-es="Dirección y Gestión de Proyectos" data-en="Project Direction &amp; Management">Dirección y Gestión de Proyectos</span>
                     <span class="cert-issuer">UNC / edX</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name" data-es="Auditorías Internas NCh-ISO 9001:2015" data-en="NCh-ISO 9001:2015 Internal Audits">Auditorías Internas NCh-ISO 9001:2015</span>
                     <span class="cert-issuer">INN Chile</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name" data-es="Inglés Intermedio B1-B2" data-en="Intermediate English B1-B2">Inglés Intermedio B1-B2</span>
                     <span class="cert-issuer">Instituto Chileno Norteamericano</span>
                 </div>
 
-                <div class="cert-tag fade-in">
+                <div class="cert-tag">
                     <span class="cert-name" data-es="Gestión de Transformación Digital" data-en="Digital Transformation Management">Gestión de Transformación Digital</span>
                     <span class="cert-issuer">UNAB — Jun 2025</span>
                 </div>
@@ -1375,28 +1375,87 @@
         }
 
         /* ----------------------------------------------------------
-           initScrollFade()
-           Usa IntersectionObserver para detectar cuándo un elemento
-           con clase .fade-in entra en el viewport y lo hace visible.
-           El delay escalonado (i * 80ms) crea efecto cascada en grupos.
+           SCROLL — Utilidad splitWords
            ---------------------------------------------------------- */
-        function initScrollFade() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach((entry, i) => {
-                    if (entry.isIntersecting) {
-                        setTimeout(() => {
-                            entry.target.classList.add('visible');
-                        }, i * 80); // Retraso progresivo por elemento
-                        observer.unobserve(entry.target); // Solo se anima una vez
-                    }
+        function splitWords(selector) {
+            document.querySelectorAll(selector).forEach(el => {
+                const words = el.textContent.trim().split(/\s+/);
+                el.innerHTML = words.map(w =>
+                    `<span class="sw-wrap" style="display:inline-block;overflow:hidden;vertical-align:bottom">` +
+                    `<span class="sw-inner" style="display:inline-block">${w}</span></span>`
+                ).join(' ');
+            });
+        }
+
+        /* ----------------------------------------------------------
+           SCROLL — ScrollTrigger en secciones existentes
+           ---------------------------------------------------------- */
+        function initScrollAnimations() {
+
+            splitWords('.section-title');
+            document.querySelectorAll('.section-title').forEach(el => {
+                gsap.from(el.querySelectorAll('.sw-inner'), {
+                    y: 40, autoAlpha: 0, stagger: 0.08, duration: 0.65, ease: 'power2.out',
+                    scrollTrigger: { trigger: el, start: 'top 82%', once: true }
                 });
-            }, {
-                threshold: 0.08,              // Entra al 8% de visibilidad
-                rootMargin: '0px 0px -40px 0px' // Margen inferior para adelantar
             });
 
-            // Observa todos los elementos con .fade-in
-            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+            gsap.utils.toArray('.section-label').forEach(el => {
+                gsap.from(el, {
+                    x: -16, autoAlpha: 0, duration: 0.5, ease: 'power2.out',
+                    scrollTrigger: { trigger: el, start: 'top 88%', once: true }
+                });
+            });
+
+            gsap.from('.about-body', {
+                y: 25, autoAlpha: 0, duration: 0.7, ease: 'power2.out',
+                scrollTrigger: { trigger: '.about-body', start: 'top 82%', once: true }
+            });
+
+            const numEl = document.querySelector('.about-number');
+            if (numEl) {
+                const supEl   = numEl.querySelector('sup');
+                const supHTML = supEl ? supEl.outerHTML : '';
+                ScrollTrigger.create({
+                    trigger: numEl, start: 'top 82%', once: true,
+                    onEnter: () => {
+                        gsap.fromTo({ val: 0 }, { val: 8 }, {
+                            duration: 1.2, ease: 'power1.out',
+                            onUpdate: function () {
+                                numEl.innerHTML = Math.round(this.targets()[0].val) + supHTML;
+                            }
+                        });
+                    }
+                });
+            }
+
+            gsap.from('.exp-item', {
+                x: -20, autoAlpha: 0, stagger: 0.12, duration: 0.6, ease: 'power2.out',
+                scrollTrigger: { trigger: '.exp-list', start: 'top 82%', once: true }
+            });
+
+            gsap.from('.skills-grid > div', {
+                y: 20, autoAlpha: 0, stagger: 0.15, duration: 0.6, ease: 'power2.out',
+                scrollTrigger: { trigger: '.skills-grid', start: 'top 82%', once: true }
+            });
+
+            gsap.from('.cert-tag', {
+                y: 10, autoAlpha: 0, stagger: 0.04, duration: 0.4, ease: 'power2.out',
+                scrollTrigger: { trigger: '.certs-wrap', start: 'top 82%', once: true }
+            });
+
+            gsap.from('.contact-headline', {
+                y: 30, autoAlpha: 0, duration: 0.7, ease: 'power2.out',
+                scrollTrigger: { trigger: '.contact-headline', start: 'top 82%', once: true }
+            });
+            gsap.from('.contact-link', {
+                x: -12, autoAlpha: 0, stagger: 0.1, duration: 0.5, ease: 'power2.out',
+                scrollTrigger: { trigger: '.contact-links', start: 'top 82%', once: true }
+            });
+            gsap.from('.whatsapp-col', {
+                y: 20, autoAlpha: 0, duration: 0.6, ease: 'power2.out',
+                scrollTrigger: { trigger: '.whatsapp-col', start: 'top 82%', once: true }
+            });
         }
 
         /* ----------------------------------------------------------
@@ -1407,6 +1466,7 @@
             initHeroAnimation();
             initCursor();
             initServiciosHover();
+            initScrollAnimations();
         });
 
         /* ----------------------------------------------------------
