@@ -1,5 +1,6 @@
 CV/
 *.pdf
+!cv.pdf
 *.docx
 *.zip
 *.txt
