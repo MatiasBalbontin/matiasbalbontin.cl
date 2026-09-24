@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://matiasbalbontin.cl/</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://matiasbalbontin.cl/career-analysis.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matiasbalbontin.cl/panel-busqueda-laboral.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://matiasbalbontin.cl/reporte-competencias.html</loc>
+    <priority>0.8</priority>
+  </url>
+<url>
+    <loc>https://matiasbalbontin.cl/sombreroapp/</loc>
+    <priority>0.7</priority>
+  </url>
+</urlset>
