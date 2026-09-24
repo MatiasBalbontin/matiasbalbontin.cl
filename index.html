@@ -3,8 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Matías Balbontín — Contador Auditor, Gestor de Proyectos, Asesor Directivo">
-    <title>Matías Balbontín</title>
+    <meta name="description" content="Matías Balbontín — Contador Auditor con especialización en Transformación Digital. Asesoría financiera, gestión de proyectos e IA aplicada en Chile.">
+    <title>Matías Balbontín — Contador Auditor & Transformación Digital</title>
+
+    <!-- Open Graph / LinkedIn / WhatsApp preview -->
+    <meta property="og:type"        content="website">
+    <meta property="og:url"         content="https://matiasbalbontin.cl/">
+    <meta property="og:title"       content="Matías Balbontín — Contador Auditor & Transformación Digital">
+    <meta property="og:description" content="Contador Auditor titulado con 8+ años en finanzas, proyectos y transformación digital. Power BI, Python, Azure. Disponible para proyectos y posiciones en Chile.">
+    <meta property="og:image"       content="https://matiasbalbontin.cl/og-image.jpg">
+    <meta property="twitter:card"   content="summary_large_image">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.svg">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://matiasbalbontin.cl/">
+
+    <!-- JSON-LD Schema -->
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Matías Balbontín",
+  "url": "https://matiasbalbontin.cl",
+  "image": "https://matiasbalbontin.cl/og-image.jpg",
+  "sameAs": ["https://linkedin.com/in/matiasbalbontin"],
+  "jobTitle": "Contador Auditor & Asesor en Transformación Digital",
+  "description": "Contador Auditor con 8+ años asesorando en finanzas, proyectos y transformación digital. Especialista en Power BI, Python, Azure.",
+  "areaServed": ["CL", "RM", "Maule", "Ñuble"],
+  "knowsAbout": ["Financial Advisory", "Project Management", "Digital Transformation", "Power BI", "Python", "Microsoft Azure"],
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+56-9-9438-8261",
+    "contactType": "Personal Contact"
+  }
+}
+    </script>
+
 
     <!--
         FUENTES TIPOGRÁFICAS (Google Fonts)
@@ -41,6 +78,10 @@
 
             --max-width:         1160px;    /* Ancho máximo del contenido */
             --pad-section:       6rem 2rem; /* Padding vertical/horizontal de secciones */
+
+            --fs-xs:             0.64rem;   /* micro: chips, etiquetas decorativas */
+            --fs-sm:             0.8rem;    /* small: metadatos, texto secundario (1.25×) */
+            --fs-base:           1rem;      /* base: texto legible (1.25×) */
         }
 
         /* ============================================================
@@ -68,7 +109,7 @@
         /* Etiqueta pequeña de sección (estilo Swiss) */
         .section-label {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.25em;
             text-transform: uppercase;
             color: var(--color-terra);
@@ -171,7 +212,7 @@
         }
         .nav-links a {
             font-family: var(--font-body);
-            font-size: 0.82rem;
+            font-size: var(--fs-sm);
             font-weight: 500;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -181,10 +222,87 @@
         }
         .nav-links a:hover { color: var(--color-terra); }
 
+        /* LinkedIn en nav */
+        .nav-linkedin {
+            display: flex;
+            align-items: center;
+            color: var(--color-muted);
+            transition: color 0.2s;
+        }
+        .nav-linkedin:hover { color: var(--color-navy); }
+
+        /* Hamburger — solo móvil */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 4px;
+            cursor: pointer;
+            z-index: 200;
+        }
+        .hamburger span {
+            display: block;
+            width: 22px;
+            height: 2px;
+            background: var(--color-text);
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .hamburger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .hamburger.is-open span:nth-child(2) { opacity: 0; }
+        .hamburger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        /* Menú móvil — drawer */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--color-bg);
+            z-index: 150;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+        }
+        .mobile-nav.is-open { display: flex; }
+        .mobile-nav a {
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 300;
+            color: var(--color-text);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .mobile-nav a:hover { color: var(--color-terra); }
+
+        /* Botón CV en nav */
+        .nav-cv-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-family: var(--font-mono);
+            font-size: var(--fs-sm);
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--color-terra);
+            text-decoration: none;
+            border: 1.5px solid var(--color-terra);
+            border-radius: 3px;
+            padding: 0.3rem 0.75rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .nav-cv-btn:hover {
+            background: var(--color-terra);
+            color: var(--color-white);
+        }
+        .nav-cv-btn svg { flex-shrink: 0; }
+
         /* Botón de idioma */
         .lang-btn {
             font-family: var(--font-mono);
-            font-size: 0.72rem;
+            font-size: var(--fs-sm);
             font-weight: 500;
             letter-spacing: 0.08em;
             color: var(--color-text);
@@ -246,7 +364,7 @@
 
         .role-item {
             font-family: var(--font-mono);
-            font-size: 0.78rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.12em;
             color: var(--color-muted);
             text-transform: uppercase;
@@ -268,7 +386,7 @@
             background: var(--color-navy);
             color: var(--color-white);
             font-family: var(--font-body);
-            font-size: 0.85rem;
+            font-size: var(--fs-base);
             font-weight: 500;
             letter-spacing: 0.07em;
             text-transform: uppercase;
@@ -286,7 +404,7 @@
             background: transparent;
             color: var(--color-text);
             font-family: var(--font-body);
-            font-size: 0.85rem;
+            font-size: var(--fs-base);
             font-weight: 500;
             letter-spacing: 0.07em;
             text-transform: uppercase;
@@ -301,7 +419,7 @@
             bottom: 2.5rem;
             right: 2rem;
             font-family: var(--font-mono);
-            font-size: 0.65rem;
+            font-size: var(--fs-xs);
             letter-spacing: 0.18em;
             color: var(--color-muted);
             text-transform: uppercase;
@@ -352,7 +470,7 @@
             background: var(--color-bg-alt);
             border: 2px dashed var(--color-border);
             display: flex; align-items: center; justify-content: center;
-            font-family: var(--font-mono); font-size: 0.7rem;
+            font-family: var(--font-mono); font-size: var(--fs-sm);
             color: var(--color-muted); letter-spacing: 0.1em;
         }
 
@@ -372,7 +490,7 @@
         }
         .about-sublabel {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.18em;
             text-transform: uppercase;
             color: var(--color-muted);
@@ -412,7 +530,7 @@
 
         .service-num {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.18em;
             color: var(--color-terra);
             grid-row: 1;
@@ -438,7 +556,7 @@
 
         .service-row .service-desc {
             font-family: var(--font-body);
-            font-size: 0.88rem;
+            font-size: var(--fs-base);
             color: var(--color-muted);
             line-height: 1.65;
             grid-column: 2;
@@ -474,7 +592,7 @@
         /* Período (año) en mono terracota */
         .exp-period {
             font-family: var(--font-mono);
-            font-size: 0.75rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.06em;
             color: var(--color-terra);
             padding-top: 0.3rem;
@@ -489,11 +607,21 @@
             margin-bottom: 0.7rem;
         }
 
+        /* Empresa / empleador */
+        .exp-company {
+            font-family: var(--font-mono);
+            font-size: var(--fs-sm);
+            letter-spacing: 0.08em;
+            color: var(--color-navy);
+            text-transform: uppercase;
+            margin-bottom: 0.65rem;
+        }
+
         /* Bullets de actividades */
         .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.35rem; }
         .exp-bullets li {
             font-family: var(--font-body);
-            font-size: 0.88rem;
+            font-size: var(--fs-base);
             color: var(--color-muted);
             padding-left: 1.2rem;
             position: relative;
@@ -505,7 +633,7 @@
             position: absolute;
             left: 0;
             color: var(--color-terra);
-            font-size: 0.8rem;
+            font-size: var(--fs-sm);
         }
 
 
@@ -524,7 +652,7 @@
 
         .skills-col-title {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--color-terra);
@@ -536,7 +664,7 @@
         .skills-list { list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
         .skills-list li {
             font-family: var(--font-body);
-            font-size: 0.9rem;
+            font-size: var(--fs-base);
             color: var(--color-text);
             display: flex;
             align-items: center;
@@ -582,17 +710,275 @@
 
         .cert-name {
             font-family: var(--font-body);
-            font-size: 0.82rem;
+            font-size: var(--fs-sm);
             color: var(--color-text);
         }
         /* Institución emisora — más pequeña y en gris */
         .cert-issuer {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: var(--fs-sm);
             color: var(--color-muted);
             letter-spacing: 0.04em;
             border-left: 1px solid var(--color-border);
             padding-left: 0.55rem;
+        }
+
+
+        /* ============================================================
+           DESCARGAR CV
+           Sección con fondo navy — contraste visual fuerte.
+           ============================================================ */
+        #descargar-cv {
+            padding: var(--pad-section);
+            background: var(--color-navy);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Inicial decorativa grande — fondo tipográfico en marca */
+        #descargar-cv::before {
+            content: 'CV';
+            position: absolute;
+            right: -2rem;
+            bottom: -2rem;
+            font-family: var(--font-display);
+            font-size: clamp(12rem, 22vw, 20rem);
+            font-weight: 700;
+            line-height: 1;
+            color: rgba(255,255,255,0.035);
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: -0.04em;
+        }
+
+        .cv-download-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Documento decorativo CSS-only */
+        .cv-doc-preview {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .cv-doc-wrap {
+            position: relative;
+            width: 200px;
+        }
+
+        .cv-doc-paper {
+            width: 200px;
+            background: #fff;
+            border-radius: 4px;
+            padding: 28px 24px 32px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.45), 0 8px 20px rgba(0,0,0,0.25);
+            position: relative;
+            z-index: 2;
+        }
+
+        .cv-doc-chip {
+            display: inline-block;
+            font-family: var(--font-mono);
+            font-size: var(--fs-xs);
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--color-terra);
+            background: rgba(196,98,45,0.1);
+            padding: 0.25rem 0.55rem;
+            border-radius: 2px;
+            margin-bottom: 14px;
+        }
+
+        .cv-doc-initials {
+            font-family: var(--font-display);
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--color-navy);
+            line-height: 1;
+            margin-bottom: 18px;
+            letter-spacing: -0.02em;
+        }
+
+        .cv-doc-lines {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .cv-doc-lines span {
+            display: block;
+            height: 6px;
+            background: var(--color-border);
+            border-radius: 2px;
+        }
+
+        .cv-doc-lines span:nth-child(2) { width: 75%; }
+        .cv-doc-lines span:nth-child(3) { width: 90%; }
+        .cv-doc-lines span:nth-child(4) { width: 55%; }
+        .cv-doc-lines span:nth-child(5) { width: 80%; margin-top: 6px; }
+        .cv-doc-lines span:nth-child(6) { width: 65%; }
+
+        .cv-doc-accent {
+            position: absolute;
+            top: -10px;
+            right: -10px;
+            width: 60px;
+            height: 60px;
+            background: var(--color-terra);
+            border-radius: 50%;
+            z-index: 1;
+            opacity: 0.25;
+            filter: blur(12px);
+        }
+
+        .cv-doc-shadow-strip {
+            position: absolute;
+            bottom: -16px;
+            left: 12px;
+            right: 12px;
+            height: 16px;
+            background: rgba(0,0,0,0.3);
+            border-radius: 0 0 8px 8px;
+            filter: blur(8px);
+            z-index: 1;
+        }
+
+        /* Lado derecho — contenido */
+        .cv-download-content {}
+
+        .cv-section-label {
+            font-family: var(--font-mono);
+            font-size: var(--fs-sm);
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--color-terra);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 1.25rem;
+        }
+        .cv-section-label::after {
+            content: '';
+            display: block;
+            width: 48px;
+            height: 1px;
+            background: var(--color-terra);
+        }
+
+        .cv-headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            font-weight: 300;
+            line-height: 1.1;
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 1.25rem;
+        }
+        .cv-headline strong {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .cv-desc {
+            font-family: var(--font-body);
+            font-size: var(--fs-base);
+            color: rgba(255,255,255,0.55);
+            line-height: 1.7;
+            max-width: 380px;
+            margin-bottom: 2.25rem;
+        }
+
+        .cv-stats {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .cv-stat {}
+
+        .cv-stat-val {
+            display: block;
+            font-family: var(--font-display);
+            font-size: 2rem;
+            font-weight: 700;
+            color: #fff;
+            line-height: 1;
+            margin-bottom: 0.3rem;
+        }
+
+        .cv-stat-label {
+            display: block;
+            font-family: var(--font-mono);
+            font-size: var(--fs-xs);
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+        }
+
+        .cv-actions {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        /* Botón de descarga — blanco sólido sobre navy */
+        .btn-download-cv {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.95rem 2.1rem;
+            background: #fff;
+            color: var(--color-navy);
+            font-family: var(--font-body);
+            font-size: var(--fs-base);
+            font-weight: 700;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid #fff;
+            transition: background 0.25s, color 0.25s;
+        }
+        .btn-download-cv:hover {
+            background: transparent;
+            color: #fff;
+        }
+
+        /* Botón secundario sobre navy */
+        .btn-cv-secondary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.65rem;
+            padding: 0.95rem 2.1rem;
+            background: transparent;
+            color: rgba(255,255,255,0.75);
+            font-family: var(--font-body);
+            font-size: var(--fs-base);
+            font-weight: 500;
+            letter-spacing: 0.07em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.25);
+            transition: border-color 0.25s, color 0.25s;
+        }
+        .btn-cv-secondary:hover {
+            border-color: rgba(255,255,255,0.65);
+            color: #fff;
+        }
+
+        @media (max-width: 768px) {
+            .cv-download-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            .cv-doc-preview { display: none; }
+            .cv-stats { gap: 1.5rem; }
         }
 
 
@@ -624,7 +1010,7 @@
         .contact-links { display: flex; flex-direction: column; gap: 0.9rem; }
         .contact-link {
             font-family: var(--font-mono);
-            font-size: 0.78rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.04em;
             color: var(--color-text);
             text-decoration: none;
@@ -696,6 +1082,14 @@
         }
 
 
+        /* Columna acciones de contacto — reemplaza inline style */
+        .contact-actions {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            align-items: flex-start;
+        }
+
         /* ============================================================
            FOOTER
            Línea final limpia. Año se actualiza con JS.
@@ -711,7 +1105,7 @@
         }
         .footer-text {
             font-family: var(--font-mono);
-            font-size: 0.7rem;
+            font-size: var(--fs-sm);
             letter-spacing: 0.08em;
             color: var(--color-muted);
         }
@@ -766,6 +1160,7 @@
 
             /* Nav */
             .nav-links { display: none; }
+            .hamburger { display: flex; }
         }
     </style>
 </head>
@@ -779,20 +1174,46 @@
     <div id="cursor" aria-hidden="true"></div>
 
     <nav id="main-nav">
-        <!-- Logo / nombre corto -->
         <a href="#hero" class="nav-logo">M. Balbontín</a>
 
-        <!-- Links de navegación — data-es / data-en controla el texto por idioma -->
         <ul class="nav-links">
-            <li><a href="#servicios"      data-es="Servicios"   data-en="Services">Servicios</a></li>
-            <li><a href="#experiencia"    data-es="Experiencia" data-en="Experience">Experiencia</a></li>
-            <li><a href="#habilidades"    data-es="Habilidades" data-en="Skills">Habilidades</a></li>
-            <li><a href="#contacto"       data-es="Contacto"    data-en="Contact">Contacto</a></li>
+            <li><a href="#servicios"   data-es="Servicios"   data-en="Services">Servicios</a></li>
+            <li><a href="#experiencia" data-es="Experiencia" data-en="Experience">Experiencia</a></li>
+            <li><a href="#habilidades" data-es="Habilidades" data-en="Skills">Habilidades</a></li>
+            <li><a href="#contacto"    data-es="Contacto"    data-en="Contact">Contacto</a></li>
+            <li>
+                <a href="#descargar-cv" class="nav-cv-btn" data-es="Descargar CV" data-en="Download CV">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                    CV
+                </a>
+            </li>
+            <li>
+                <!-- [TODO] Reemplaza la URL con tu perfil real de LinkedIn -->
+                <a href="https://linkedin.com/in/matiasbalbontin" class="nav-linkedin" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </li>
         </ul>
 
-        <!-- Botón toggle de idioma -->
-        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ES | EN</button>
+        <div style="display:flex;align-items:center;gap:1rem;">
+            <button class="lang-btn" id="lang-btn" onclick="toggleLang()">ES | EN</button>
+            <button class="hamburger" id="hamburger" aria-label="Menú" onclick="toggleMobileNav()">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
     </nav>
+
+    <!-- Menú móvil -->
+    <div class="mobile-nav" id="mobile-nav">
+        <a href="#servicios"   onclick="closeMobileNav()" data-es="Servicios"   data-en="Services">Servicios</a>
+        <a href="#experiencia" onclick="closeMobileNav()" data-es="Experiencia" data-en="Experience">Experiencia</a>
+        <a href="#habilidades" onclick="closeMobileNav()" data-es="Habilidades" data-en="Skills">Habilidades</a>
+        <a href="#contacto"    onclick="closeMobileNav()" data-es="Contacto"    data-en="Contact">Contacto</a>
+        <a href="#descargar-cv" onclick="closeMobileNav()" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
+        <a href="https://linkedin.com/in/matiasbalbontin" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+    </div>
 
 
     <section id="hero">
@@ -804,21 +1225,46 @@
 
         <div class="hero-roles">
             <span class="role-item" data-es="Contador Auditor" data-en="CPA &amp; Auditor">Contador Auditor</span>
-            <span class="role-item" data-es="Gestor de Proyectos" data-en="Project Manager">Gestor de Proyectos</span>
-            <span class="role-item" data-es="Asesor Directivo" data-en="Strategic Advisor">Asesor Directivo</span>
-            <span class="role-item" data-es="Ing. Informática" data-en="Computer Engineering">Ing. Informática</span>
+            <span class="role-item" data-es="Transformación Digital &amp; IA" data-en="Digital Transformation &amp; AI">Transformación Digital &amp; IA</span>
         </div>
 
         <div class="hero-cta">
-            <a href="#contacto" class="btn-primary" data-es="Conversemos" data-en="Let's Talk">Conversemos</a>
+            <a href="#contacto" class="btn-primary" data-es="Ver disponibilidad" data-en="Check Availability">Ver disponibilidad</a>
             <a href="#experiencia" class="btn-secondary" data-es="Ver trayectoria" data-en="My Journey">Ver trayectoria</a>
-            <a href="/cv.pdf" class="btn-secondary" download="CV_Matias_Balbontin.pdf" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
+            <a href="#descargar-cv" class="btn-secondary" data-es="Descargar CV" data-en="Download CV">Descargar CV</a>
         </div>
 
         <div class="scroll-indicator" aria-hidden="true">scroll</div>
 
     </section>
 
+    <!-- ============================================================
+         PROYECTOS DESTACADOS
+         ============================================================ -->
+    <section id="proyectos">
+        <div class="container">
+            <p class="section-label" data-es="Proyectos" data-en="Projects">Proyectos</p>
+            <h2 class="section-title" data-es="Explora mis trabajos" data-en="Explore my work">Explora mis trabajos</h2>
+            <nav class="projects-nav" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+                <a href="career-analysis.html" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: var(--color-text); transition: all 0.3s;">
+                    <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem;">Análisis de Carrera</h3>
+                    <p style="margin: 0; font-size: var(--fs-base); color: var(--color-muted);">Matriz de oportunidades laborales</p>
+                </a>
+                <a href="panel-busqueda-laboral.html" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: var(--color-text); transition: all 0.3s;">
+                    <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem;">Panel de Búsqueda</h3>
+                    <p style="margin: 0; font-size: var(--fs-base); color: var(--color-muted);">Tracking interactivo de candidaturas</p>
+                </a>
+                <a href="reporte-competencias.html" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: var(--color-text); transition: all 0.3s;">
+                    <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem;">Reporte de Competencias</h3>
+                    <p style="margin: 0; font-size: var(--fs-base); color: var(--color-muted);">Evaluación de habilidades transferibles</p>
+                </a>
+                <a href="opengym/index.html" style="padding: 1.5rem; border: 1px solid var(--color-border); border-radius: 8px; text-decoration: none; color: var(--color-text); transition: all 0.3s;">
+                    <h3 style="margin: 0 0 0.5rem; font-size: 1.1rem;">OpenGym App</h3>
+                    <p style="margin: 0; font-size: var(--fs-base); color: var(--color-muted);">App de fitness y entrenamiento</p>
+                </a>
+            </nav>
+        </div>
+    </section>
 
     <!-- ============================================================
          SOBRE MÍ
@@ -928,7 +1374,7 @@
 
             <div class="exp-list">
 
-                <!-- Período 0: Emprendimientos / Founder (más reciente, va primero) -->
+                <!-- Período 0: Emprendimientos / Founder -->
                 <div class="exp-item">
                     <div class="exp-period"
                          data-es="2022 — Actual"
@@ -937,67 +1383,46 @@
                         <h3 class="exp-title"
                             data-es="Fundador &amp; Socio Comercial"
                             data-en="Founder &amp; Commercial Partner">Fundador &amp; Socio Comercial</h3>
+                        <!-- [TODO] Agrega 1-2 métricas: clientes atendidos, ingresos gestionados, tamaño de equipo -->
                         <ul class="exp-bullets">
-                            <li data-es="Fundador de Proaudita.cl — empresa de auditoría y asesoría empresarial"
-                                data-en="Founder of Proaudita.cl — audit and business advisory firm">
-                                Fundador de <strong>Proaudita.cl</strong> — empresa de auditoría y asesoría empresarial</li>
-                            <li data-es="Fundador de FastPOS.cl — software de ventas y control interno para PYMEs"
-                                data-en="Founder of FastPOS.cl — sales and internal control software for SMEs">
-                                Fundador de <strong>FastPOS.cl</strong> — software de ventas y control interno para PYMEs</li>
-                            <li data-es="Creador de FastMarket — plataforma de herramientas para el control interno"
-                                data-en="Creator of FastMarket — internal control tools platform">
-                                Creador de <strong>FastMarket</strong> — plataforma de herramientas para el control interno</li>
-                            <li data-es="Socio comercial de ServicioDTE — empresa de contabilidad y facturación electrónica"
-                                data-en="Commercial partner at ServicioDTE — accounting and e-invoicing company">
-                                Socio comercial de <strong>ServicioDTE</strong> — empresa de contabilidad y facturación electrónica</li>
+                            <li data-es="Proaudita.cl — auditoría y asesoría empresarial para PYMEs"
+                                data-en="Proaudita.cl — audit and business advisory for SMEs">
+                                <strong>Proaudita.cl</strong> — auditoría y asesoría empresarial para PYMEs</li>
+                            <li data-es="FastPOS.cl — software de ventas y control interno (SaaS)"
+                                data-en="FastPOS.cl — sales and internal control software (SaaS)">
+                                <strong>FastPOS.cl</strong> — software de ventas y control interno (SaaS)</li>
+                            <li data-es="FastMarket — plataforma de herramientas para el control interno"
+                                data-en="FastMarket — internal control tools platform">
+                                <strong>FastMarket</strong> — plataforma de herramientas para el control interno</li>
+                            <li data-es="Socio comercial en ServicioDTE — contabilidad y facturación electrónica"
+                                data-en="Commercial partner at ServicioDTE — accounting and e-invoicing">
+                                Socio comercial en <strong>ServicioDTE</strong> — contabilidad y facturación electrónica</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Período 1: Asesoría financiera a empresas (2025 — actual) -->
+                <!-- Período 1: Asesoría financiera (2025 — actual) -->
                 <div class="exp-item">
                     <div class="exp-period"
                          data-es="2025 — Actual"
                          data-en="2025 — Present">2025 — Actual</div>
                     <div>
                         <h3 class="exp-title"
-                            data-es="Asesoría Financiera a Empresas"
-                            data-en="Corporate Financial Advisory">Asesoría Financiera a Empresas</h3>
+                            data-es="Asesor Financiero — Cartera Multirregional"
+                            data-en="Financial Advisor — Multi-region Portfolio">Asesor Financiero — Cartera Multirregional</h3>
+                        <!-- [TODO] Agrega empresa(s) cliente o sector: "Sector agroindustrial · Maule" -->
                         <ul class="exp-bullets">
-                            <li data-es="Asesoría administrativa y financiera a empresas de la región del Maule y Ñuble"
-                                data-en="Administrative and financial advisory to businesses in the Metropolitan, Maule and Ñuble regions">
-                                Asesoría administrativa y financiera a empresas de las regiones Metropolitana, del Maule y de Ñuble</li>
+                            <li data-es="Asesoría administrativa y financiera en regiones Metropolitana, Maule y Ñuble"
+                                data-en="Administrative and financial advisory in Metropolitan, Maule and Ñuble regions">
+                                Asesoría administrativa y financiera en regiones Metropolitana, Maule y Ñuble</li>
                             <li data-es="Mitigación de riesgos financieros y profesionalización de PYMEs"
-                                data-en="Financial risk mitigation and PYME professionalization">
+                                data-en="Financial risk mitigation and SME professionalization">
                                 Mitigación de riesgos financieros y profesionalización de PYMEs</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Período 2: Gestión de proyectos (2022 — actual) -->
-                <div class="exp-item">
-                    <div class="exp-period"
-                         data-es="2022 — Actual"
-                         data-en="2022 — Present">2022 — Actual</div>
-                    <div>
-                        <h3 class="exp-title"
-                            data-es="Gestión de Proyectos y Cartera de Clientes"
-                            data-en="Project &amp; Client Portfolio Management">Gestión de Proyectos y Cartera de Clientes</h3>
-                        <ul class="exp-bullets">
-                            <li data-es="Análisis de oportunidades de negocio y evaluación de propuestas de inversión"
-                                data-en="Business opportunity analysis and investment proposal evaluation">
-                                Análisis de oportunidades de negocio y evaluación de propuestas de inversión</li>
-                            <li data-es="Gestión personalizada de clientes potenciales y en cartera"
-                                data-en="Personalized management of prospect and active client portfolios">
-                                Gestión personalizada de clientes potenciales y en cartera</li>
-                            <li data-es="Verificación de procedimientos, protocolos y normativas internas"
-                                data-en="Verification of internal procedures, protocols, and regulations">
-                                Verificación de procedimientos, protocolos y normativas internas</li>
-                        </ul>
-                    </div>
-                </div>
-
-                <!-- Período 3: Dirección financiera (2020 — 2021) -->
+                <!-- Período 2: Dirección financiera (2020 — 2021) -->
                 <div class="exp-item">
                     <div class="exp-period"
                          data-es="2020 — 2021"
@@ -1006,6 +1431,9 @@
                         <h3 class="exp-title"
                             data-es="Dirección Financiera y Auditoría de Operaciones"
                             data-en="Financial Direction &amp; Operations Audit">Dirección Financiera y Auditoría de Operaciones</h3>
+                        <p class="exp-company"
+                           data-es="Andimar · Transporte interurbano"
+                           data-en="Andimar · Interurban transport">Andimar · Transporte interurbano</p>
                         <ul class="exp-bullets">
                             <li data-es="Recaudación de ingresos en el sector comercial interurbano a nivel nacional"
                                 data-en="Revenue collection in the interurban commercial sector at national level">
@@ -1105,39 +1533,10 @@
 
             <div class="certs-wrap">
 
+                <!-- Tier 1: peso institucional alto -->
                 <div class="cert-tag">
-                    <span class="cert-name">Agile Explorer</span>
-                    <span class="cert-issuer">IBM SkillsBuild</span>
-                </div>
-
-                <div class="cert-tag">
-                    <span class="cert-name">AI Fluency: Framework &amp; Foundations</span>
-                    <span class="cert-issuer">Anthropic / UCC</span>
-                </div>
-
-                <div class="cert-tag">
-                    <span class="cert-name" data-es="Data Fundamentals" data-en="Data Fundamentals">Data Fundamentals</span>
-                    <span class="cert-issuer">IBM SkillsBuild</span>
-                </div>
-
-                <div class="cert-tag">
-                    <span class="cert-name">Career Management Essentials</span>
-                    <span class="cert-issuer">IBM SkillsBuild</span>
-                </div>
-
-                <div class="cert-tag">
-                    <span class="cert-name">Explore Emerging Tech</span>
-                    <span class="cert-issuer">IBM SkillsBuild</span>
-                </div>
-
-                <div class="cert-tag">
-                    <span class="cert-name" data-es="Fundamentos de Python" data-en="Python Fundamentals">Fundamentos de Python</span>
-                    <span class="cert-issuer">Cisco Networking Academy</span>
-                </div>
-
-                <div class="cert-tag">
-                    <span class="cert-name">Database Foundations</span>
-                    <span class="cert-issuer">Oracle Academy / UNAB</span>
+                    <span class="cert-name" data-es="Auditorías Internas NCh-ISO 9001:2015" data-en="NCh-ISO 9001:2015 Internal Audits">Auditorías Internas NCh-ISO 9001:2015</span>
+                    <span class="cert-issuer">INN Chile</span>
                 </div>
 
                 <div class="cert-tag">
@@ -1151,23 +1550,126 @@
                 </div>
 
                 <div class="cert-tag">
-                    <span class="cert-name" data-es="Auditorías Internas NCh-ISO 9001:2015" data-en="NCh-ISO 9001:2015 Internal Audits">Auditorías Internas NCh-ISO 9001:2015</span>
-                    <span class="cert-issuer">INN Chile</span>
+                    <span class="cert-name" data-es="Gestión de Transformación Digital" data-en="Digital Transformation Management">Gestión de Transformación Digital</span>
+                    <span class="cert-issuer">UNAB · Arizona State University</span>
                 </div>
 
+                <div class="cert-tag">
+                    <span class="cert-name">Database Foundations</span>
+                    <span class="cert-issuer">Oracle Academy / UNAB</span>
+                </div>
+
+                <div class="cert-tag">
+                    <span class="cert-name">AI Fluency: Framework &amp; Foundations</span>
+                    <span class="cert-issuer">Anthropic / UCC</span>
+                </div>
+
+                <div class="cert-tag">
+                    <span class="cert-name" data-es="Fundamentos de Python" data-en="Python Fundamentals">Fundamentos de Python</span>
+                    <span class="cert-issuer">Cisco Networking Academy</span>
+                </div>
+
+                <!-- Tier 2: complementarios — agrupados -->
                 <div class="cert-tag">
                     <span class="cert-name" data-es="Inglés Intermedio B1-B2" data-en="Intermediate English B1-B2">Inglés Intermedio B1-B2</span>
                     <span class="cert-issuer">Instituto Chileno Norteamericano</span>
                 </div>
 
                 <div class="cert-tag">
-                    <span class="cert-name" data-es="Gestión de Transformación Digital" data-en="Digital Transformation Management">Gestión de Transformación Digital</span>
-                    <span class="cert-issuer">UNAB · Arizona State University</span>
+                    <span class="cert-name" data-es="Agile Explorer · Data Fundamentals · Emerging Tech" data-en="Agile Explorer · Data Fundamentals · Emerging Tech">Agile Explorer · Data Fundamentals · Emerging Tech</span>
+                    <span class="cert-issuer">IBM SkillsBuild</span>
                 </div>
 
             </div>
         </div>
     </section><!-- /certificaciones -->
+
+
+    <!-- ============================================================
+         DESCARGAR CV
+         Sección navy con documento decorativo + CTA de descarga.
+         Ruta del archivo: assets/Descargar_CV/CV-Matias-Balbontin.pdf
+         ============================================================ -->
+    <section id="descargar-cv">
+        <div class="container">
+            <div class="cv-download-grid">
+
+                <!-- Documento decorativo CSS-only -->
+                <div class="cv-doc-preview">
+                    <div class="cv-doc-wrap">
+                        <div class="cv-doc-paper">
+                            <div class="cv-doc-chip">CV · PDF</div>
+                            <div class="cv-doc-initials">MB</div>
+                            <div class="cv-doc-lines">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                        </div>
+                        <div class="cv-doc-accent"></div>
+                        <div class="cv-doc-shadow-strip"></div>
+                    </div>
+                </div>
+
+                <!-- Contenido -->
+                <div class="cv-download-content">
+
+                    <p class="cv-section-label" data-es="Currículum Vitae" data-en="Curriculum Vitae">Currículum Vitae</p>
+
+                    <h2 class="cv-headline">
+                        <span data-es="Toda la trayectoria," data-en="All the experience,">Toda la trayectoria,</span><br>
+                        <strong data-es="en un documento." data-en="in one document.">en un documento.</strong>
+                    </h2>
+
+                    <p class="cv-desc"
+                       data-es="Perfil profesional completo: experiencia, certificaciones, habilidades técnicas y de gestión. Actualizado a 2026."
+                       data-en="Full professional profile: experience, certifications, technical and management skills. Updated 2026.">
+                        Perfil profesional completo: experiencia, certificaciones, habilidades técnicas y de gestión. Actualizado a 2026.
+                    </p>
+
+                    <div class="cv-stats">
+                        <div class="cv-stat">
+                            <span class="cv-stat-val">PDF</span>
+                            <span class="cv-stat-label" data-es="Formato" data-en="Format">Formato</span>
+                        </div>
+                        <div class="cv-stat">
+                            <span class="cv-stat-val">2026</span>
+                            <span class="cv-stat-label" data-es="Actualizado" data-en="Updated">Actualizado</span>
+                        </div>
+                        <div class="cv-stat">
+                            <span class="cv-stat-val">ES</span>
+                            <span class="cv-stat-label" data-es="Idioma" data-en="Language">Idioma</span>
+                        </div>
+                        <div class="cv-stat">
+                            <span class="cv-stat-val">8+</span>
+                            <span class="cv-stat-label" data-es="Años exp." data-en="Years exp.">Años exp.</span>
+                        </div>
+                    </div>
+
+                    <div class="cv-actions">
+                        <a href="assets/Descargar_CV/CV-Matias-Balbontin.pdf"
+                           class="btn-download-cv"
+                           download="CV-Matias-Balbontin.pdf"
+                           data-es="↓ Descargar CV"
+                           data-en="↓ Download CV">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                            <span data-es="Descargar CV" data-en="Download CV">Descargar CV</span>
+                        </a>
+                        <a href="mailto:matiasrbalbontin@gmail.com"
+                           class="btn-cv-secondary"
+                           data-es="Solicitar por email"
+                           data-en="Request via email">
+                            <span data-es="Solicitar por email" data-en="Request via email">Solicitar por email</span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section><!-- /descargar-cv -->
 
 
     <!-- ============================================================
@@ -1192,9 +1694,9 @@
                         Cambia las palabras editando data-es / data-en de cada <span>.
                     -->
                     <h2 class="contact-headline">
-                        <span data-es="¿Tienes un" data-en="Have a">¿Tienes un</span><br>
-                        <strong data-es="proyecto?" data-en="project?">proyecto?</strong><br>
-                        <span data-es="Hablemos." data-en="Let's talk.">Hablemos.</span>
+                        <span data-es="Listo para" data-en="Ready for">Listo para</span><br>
+                        <strong data-es="el siguiente paso." data-en="the next step.">el siguiente paso.</strong><br>
+                        <span data-es="Conversemos." data-en="Let's talk.">Conversemos.</span>
                     </h2>
 
                     <!-- Datos de contacto directo
@@ -1222,7 +1724,7 @@
                         Para cambiar el número: reemplaza 56994388261 por el nuevo (sin + ni espacios).
                     -->
                     <!-- Botones de contacto: WhatsApp + Agendar reunión -->
-                    <div style="display:flex; flex-direction:column; gap:0.75rem; align-items:flex-start;">
+                    <div class="contact-actions">
 
                         <!-- WhatsApp -->
                         <a href="https://wa.me/56994388261?text=Hola%20Mat%C3%ADas%2C%20vi%20tu%20p%C3%A1gina%20y%20me%20gustar%C3%ADa%20conversar."
@@ -1252,14 +1754,12 @@
                             <span data-es="Agendar una reunión" data-en="Schedule a meeting">Agendar una reunión</span>
                         </a>
 
-                        <a href="mailto:matiasrbalbontin@gmail.com"
-                           class="btn-cal"
-                           data-es="Enviar correo" data-en="Send an email">
+                        <a href="mailto:matiasrbalbontin@gmail.com" class="btn-cal">
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                                 <rect x="2" y="4" width="20" height="16" rx="2"/>
                                 <polyline points="2,4 12,13 22,4"/>
                             </svg>
-                            <span>Enviar correo</span>
+                            <span data-es="Enviar correo" data-en="Send an email">Enviar correo</span>
                         </a>
 
                     </div>
@@ -1401,6 +1901,23 @@
         }
 
         /* ----------------------------------------------------------
+           MENÚ MÓVIL
+           ---------------------------------------------------------- */
+        function toggleMobileNav() {
+            const nav  = document.getElementById('mobile-nav');
+            const btn  = document.getElementById('hamburger');
+            const open = nav.classList.toggle('is-open');
+            btn.classList.toggle('is-open', open);
+            document.body.style.overflow = open ? 'hidden' : '';
+        }
+
+        function closeMobileNav() {
+            document.getElementById('mobile-nav').classList.remove('is-open');
+            document.getElementById('hamburger').classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+
+        /* ----------------------------------------------------------
            IDIOMA ACTIVO — 'es' o 'en'
            No editar directamente; usar el botón EN | ES de la página.
            ---------------------------------------------------------- */
@@ -1499,6 +2016,15 @@
             gsap.from('.cert-tag', {
                 y: 10, autoAlpha: 0, stagger: 0.04, duration: 0.4, ease: 'power2.out',
                 scrollTrigger: { trigger: '.certs-wrap', start: 'top 82%', once: true }
+            });
+
+            gsap.from('.cv-doc-paper', {
+                y: 30, autoAlpha: 0, duration: 0.8, ease: 'power2.out',
+                scrollTrigger: { trigger: '#descargar-cv', start: 'top 80%', once: true }
+            });
+            gsap.from('.cv-download-content > *', {
+                y: 20, autoAlpha: 0, stagger: 0.12, duration: 0.6, ease: 'power2.out',
+                scrollTrigger: { trigger: '#descargar-cv', start: 'top 78%', once: true }
             });
 
             gsap.from('.contact-headline', {

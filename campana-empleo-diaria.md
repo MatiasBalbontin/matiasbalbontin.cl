@@ -13,7 +13,7 @@ según paquete completo). Ubicación: Concepción, Curicó, Talca, Santiago o re
 
 OBJETIVO DE CADA SESIÓN: Identificar 10-15 entidades NUEVAS (no repetidas de la lista de abajo),
 obtener el email directo de RRHH/selección, y crear BORRADORES en Gmail (matiasrbalbontin@gmail.com)
-con el CV correcto adjunto en PDF. NO enviar directo — quedan como borrador para revisión y envío manual.
+con el enlace al CV correcto (ver más abajo). NO enviar directo — quedan como borrador para revisión y envío manual.
 
 TIPOS DE ENTIDAD A CUBRIR (rotar según corresponda):
 1. RRHH de empresas medianas/grandes (privado) — transporte, fintech, tech, servicios financieros,
@@ -25,17 +25,31 @@ TIPOS DE ENTIDAD A CUBRIR (rotar según corresponda):
    aparte y no se cubre con esta campaña).
 4. Empresas específicas que Matías indique caso a caso (lista abierta, se agregan bajo pedido).
 
-QUÉ VERSIÓN DE CV USAR:
-- CV_Matias_Balbontin_A_Corporativo.pdf → cargos de control de gestión, auditoría interna,
-  jefatura administrativa-financiera, finanzas, contabilidad, sector público.
-- CV_Matias_Balbontin_B_Datos_BI.pdf → cargos de analista BI, datos, automatización, transformación
-  digital, o cuando la entidad es tech/fintech.
-Ambos están en D:\matiasbalbontin.cl\CV\. Si hay duda razonable, usar versión A (perfil base).
+QUÉ VERSIÓN DE CV USAR (por enlace público, NO adjuntar el PDF):
+- Versión A (Corporativo) → https://matiasbalbontin.cl/cv.pdf — usar para cargos de control de
+  gestión, auditoría interna, jefatura administrativa-financiera, finanzas, contabilidad, sector
+  público.
+- Versión B (Datos/BI) → aún no tiene enlace público dedicado. Si el cargo es claramente de
+  analista BI/datos/tech y conviene usar la versión B, usar de todas formas el enlace de la
+  versión A por ahora (es la única publicada) y dejarlo anotado en el registro de seguimiento
+  como "CV usado: A (B no publicado aún)". Avisar a Matías si esto se repite mucho, para que
+  publique también matiasbalbontin.cl/cv-b.pdf o similar.
+NOTA TÉCNICA: no adjuntar el PDF directamente en el borrador (create_draft con attachment
+en base64) — el procesamiento de un archivo adjunto de este tamaño es muy costoso en cada
+ejecución. Usar siempre el enlace público en el cuerpo del correo en su lugar.
 
 ENTIDADES YA CONTACTADAS (NO repetir estos correos):
 selecciongtp@turbus.cl, rrhh@cruzdelsur.com, postulaciones@bussur.com, seleccion@andimar.cl,
 pablo.mellado@pullmanbus.cl, contacto@fintual.com, contacto@buk.cl, hola@blackend.dev,
-contacto@xcorp.cl, contacto@anami.cl
+contacto@xcorp.cl, contacto@anami.cl, direcciongestiondepersonas@curico.cl, dideco@curico.cl,
+administracion@curico.cl,
+alvaroparker@michaelpage.cl, drrhh@ubiobio.cl, contacto@hqsconsultores.cl, info@bvmconsultores.com, lgonzalez@munistgo.cl, personal@lascondes.cl, jaime.pla@providencia.cl, informaciones@satjob.cl,
+contacto@hmauditores.cl, advalia@advalia.cl, contacto@moore-landa.cl, contacto@auren.cl,
+santiago@egonzehnder.com, JRonconi@SpencerStuart.com, rrhh@renca.cl, rrhh@munipucon.cl,
+evaldebenito@sanantonio.cl, alejandro.rojas@molina.cl, sfinanzas@muniquintero.cl, postulaciones@sii.cl,
+santiago@ecovis.com, info@krebs.cl, info@csconsultoreschile.cl, comunicaciones@humannet.cl,
+mcarrasco@incluworkconsultores.cl, jmarchant@losangeles.cl, sbabaeza@municipalidadchillan.cl,
+nmejias@copiapo.cl, partes@coyhaique.cl
 
 INSTRUCCIONES:
 1. Busca entidades según el tipo asignado a la sesión, prioriza las que calzan con el piso
@@ -44,8 +58,9 @@ INSTRUCCIONES:
 2. Obtén el email real de RRHH/selección desde su sitio web o fuente pública (NO inventar emails).
 3. Verifica que el email no esté ya en la lista de "ya contactadas".
 4. Determina versión de CV (A o B) según el tipo de cargo/entidad.
-5. Crea el borrador en Gmail con create_draft: destinatario, asunto, cuerpo (plantilla abajo),
-   y el PDF del CV correspondiente adjunto.
+5. Crea el borrador en Gmail con create_draft: destinatario, asunto, cuerpo (plantilla abajo)
+   con el enlace al CV correspondiente incluido en el texto. NO adjuntar el PDF como archivo
+   (ver nota técnica arriba).
 6. Agrega los emails nuevos a la sección "ENTIDADES YA CONTACTADAS" de este archivo
    (campana-empleo-diaria.md) y registra fecha, entidad, cargo/motivo y versión de CV usada
    en la tabla de seguimiento al final.
@@ -77,8 +92,9 @@ interno certificado en NCh-ISO 9001:2015. Actualmente curso Ingeniería en Infor
 Computación, lo que me permite complementar el criterio contable con automatización de
 reportería en Power BI, Excel avanzado y Python.
 
-Adjunto mi CV con el detalle de mi trayectoria. Quedo atento/a a sus comentarios y a
-disposición para una entrevista.
+Puede revisar mi CV en el siguiente enlace: https://matiasbalbontin.cl/cv.pdf
+
+Quedo atento/a a sus comentarios y a disposición para una entrevista.
 
 Saludos cordiales,
 Matías Rodrigo Balbontín Gaete
@@ -112,6 +128,47 @@ IMPORTANTE:
 | 2026-08-14 | Xcorp | contacto@xcorp.cl | Candidatura espontánea | B | Adjuntar manual (previo a esta campaña) |
 | 2026-08-14 | Anami | contacto@anami.cl | Candidatura espontánea | B | Adjuntar manual (previo a esta campaña) |
 
+| 2026-09-16 | Michael Page Chile | alvaroparker@michaelpage.cl | Candidatura espontánea (headhunter — control de gestión/auditoría/finanzas) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-16 | Universidad del Bío-Bío | drrhh@ubiobio.cl | Candidatura espontánea (sector público/universidad) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-16 | HQS Consultores | contacto@hqsconsultores.cl | Candidatura espontánea (headhunter) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-16 | BVM Consultores | info@bvmconsultores.com | Candidatura espontánea (headhunter) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-16 | Municipalidad de Santiago | lgonzalez@munistgo.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-16 | Municipalidad de Las Condes | personal@lascondes.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-16 | Municipalidad de Providencia | jaime.pla@providencia.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-16 | Sat Job | informaciones@satjob.cl | Candidatura espontánea (headhunter/bolsa de empleo) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+
+| 2026-09-18 | HS Group Consultores (auditores) | contacto@hmauditores.cl | Candidatura espontánea (auditoría/contabilidad/jefatura adm-fin) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Advalia Auditores Consultores SpA | advalia@advalia.cl | Candidatura espontánea (auditoría interna/control de gestión) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Moore Landa Auditores | contacto@moore-landa.cl | Candidatura espontánea (auditoría/control de gestión) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Auren Chile | contacto@auren.cl | Candidatura espontánea (auditoría/control de gestión/finanzas) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Egon Zehnder (oficina Santiago) | santiago@egonzehnder.com | Candidatura espontánea (headhunter — búsqueda ejecutiva financiera) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Spencer Stuart — Julieta Ronconi | JRonconi@SpencerStuart.com | Candidatura espontánea (headhunter — búsqueda ejecutiva) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Municipalidad de Renca | rrhh@renca.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Municipalidad de Pucón | rrhh@munipucon.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Municipalidad de San Antonio — Dir. Adm. y Finanzas | evaldebenito@sanantonio.cl | Candidatura espontánea (jefatura administrativa-financiera) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Municipalidad de Molina — Dir. Adm. y Finanzas | alejandro.rojas@molina.cl | Candidatura espontánea (jefatura administrativa-financiera) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+| 2026-09-18 | Municipalidad de Quintero — Dir. Adm. y Finanzas | sfinanzas@muniquintero.cl | Candidatura espontánea (jefatura administrativa-financiera) | A | Borrador creado (CV pendiente adjuntar manualmente) |
+
+| 2026-09-17 | Municipalidad de Curicó — Dirección de Gestión de Personas | direcciongestiondepersonas@curico.cl | Candidatura espontánea (prueba) | A | Borrador creado |
+| 2026-09-17 | Municipalidad de Curicó — DIDECO | dideco@curico.cl | Candidatura espontánea (prueba) | A | Borrador creado |
+| 2026-09-17 | Municipalidad de Curicó — Administración Municipal | administracion@curico.cl | Candidatura espontánea (prueba) | A | Borrador creado |
+
+| 2026-09-20 | Servicio de Impuestos Internos (SII) | postulaciones@sii.cl | Candidatura espontánea (sector público central, Santiago — control de gestión/auditoría/finanzas) | A | Borrador creado |
+
+| 2026-09-21 | Ecovis Chile (auditoría/consultoría tributaria) | santiago@ecovis.com | Candidatura espontánea (auditoría/control de gestión/finanzas) | A | Borrador creado |
+| 2026-09-21 | Krebs — Consultora de Búsqueda Ejecutiva | info@krebs.cl | Candidatura espontánea (headhunter — búsqueda ejecutiva) | A | Borrador creado |
+| 2026-09-21 | CS Consultores Chile | info@csconsultoreschile.cl | Candidatura espontánea (headhunter) | A | Borrador creado |
+| 2026-09-21 | HumanNet Chile | comunicaciones@humannet.cl | Candidatura espontánea (headhunter/consultora RRHH) | A | Borrador creado |
+| 2026-09-21 | Inclu Work Consultores (Iquique) | mcarrasco@incluworkconsultores.cl | Candidatura espontánea (headhunter) | A | Borrador creado |
+| 2026-09-21 | Municipalidad de Los Ángeles — Dirección de Administración y Finanzas | jmarchant@losangeles.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado |
+| 2026-09-21 | Municipalidad de Chillán — Dirección de Administración y Finanzas | sbabaeza@municipalidadchillan.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado |
+| 2026-09-21 | Municipalidad de Copiapó — Dirección de Finanzas | nmejias@copiapo.cl | Candidatura espontánea (sector público/municipal) | A | Borrador creado |
+| 2026-09-21 | Municipalidad de Coyhaique — Oficina de Partes | partes@coyhaique.cl | Candidatura espontánea (sector público/municipal, correo general de derivación) | A | Borrador creado |
+
+| 2026-09-23 | BOsmart (Curicó) — Jefe de Administración | entrevistaspostulaciones2026@gmail.com | Solicitud de entrevista directa (a pedido de Matías — foco en dirección de proyectos, auditorías internas ISO 9001, manuales de procedimientos) | A | Borrador creado |
+| 2026-09-23 | TRC Recruitment (Curicó) — Jefe de Aseguramiento de Calidad | entrevistaspostulaciones2026@gmail.com | Solicitud de entrevista directa (a pedido de Matías) | A | Borrador creado |
+| 2026-09-23 | ManpowerGroup (Curicó) — Gerente Comercial | entrevistaspostulaciones2026@gmail.com | Solicitud de entrevista directa (a pedido de Matías) | A | Borrador creado |
+
 *(Desde acá, cada sesión de la tarea programada agrega sus filas nuevas)*
 
 ---
@@ -131,4 +188,4 @@ IMPORTANTE:
   concurso, no envío directo de correo) — solo se cubre RRHH de servicios públicos con
   candidatura espontánea directa.
 
-*Última actualización: 2026-09-15*
+*Última actualización: 2026-09-23*
