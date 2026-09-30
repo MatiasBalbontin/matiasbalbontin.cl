@@ -49,7 +49,11 @@ santiago@egonzehnder.com, JRonconi@SpencerStuart.com, rrhh@renca.cl, rrhh@munipu
 evaldebenito@sanantonio.cl, alejandro.rojas@molina.cl, sfinanzas@muniquintero.cl, postulaciones@sii.cl,
 santiago@ecovis.com, info@krebs.cl, info@csconsultoreschile.cl, comunicaciones@humannet.cl,
 mcarrasco@incluworkconsultores.cl, jmarchant@losangeles.cl, sbabaeza@municipalidadchillan.cl,
-nmejias@copiapo.cl, partes@coyhaique.cl
+nmejias@copiapo.cl, partes@coyhaique.cl,
+finanzas@coronel.cl, sedecorebiobio@gorebiobio.cl, katherine.suazo@conaf.cl, comunicaciones@randstad.cl,
+secretaria@camaradecomercioconcepcion.cl, lverap@muniflorida.cl, concepcionchile@deloitte.com,
+opartBiobio@Sence.cl, contacto.biobio@sag.gob.cl, lasenjo@ucsc.cl, ine.concepcion@ine.gob.cl,
+opartes.biobio@mop.gov.cl, mmora@inacap.cl, oirs@cajbiobio.cl
 
 INSTRUCCIONES:
 1. Busca entidades según el tipo asignado a la sesión, prioriza las que calzan con el piso
@@ -169,6 +173,22 @@ IMPORTANTE:
 | 2026-09-23 | TRC Recruitment (Curicó) — Jefe de Aseguramiento de Calidad | entrevistaspostulaciones2026@gmail.com | Solicitud de entrevista directa (a pedido de Matías) | A | Borrador creado |
 | 2026-09-23 | ManpowerGroup (Curicó) — Gerente Comercial | entrevistaspostulaciones2026@gmail.com | Solicitud de entrevista directa (a pedido de Matías) | A | Borrador creado |
 
+| 2026-09-27 | Municipalidad de Coronel — Dirección de Administración y Finanzas | finanzas@coronel.cl | Candidatura espontánea (jefatura administrativa-financiera, foco semanal Concepción/Biobío) | A | Borrador creado |
+| 2026-09-27 | Gobierno Regional del Biobío | sedecorebiobio@gorebiobio.cl | Candidatura espontánea (sector público regional) | A | Borrador creado |
+| 2026-09-27 | CONAF Biobío — Depto. Finanzas y Administración | katherine.suazo@conaf.cl | Candidatura espontánea (servicio público estatal, jefatura administrativa-financiera) | A | Borrador creado |
+| 2026-09-27 | Randstad Concepción | comunicaciones@randstad.cl | Candidatura espontánea (headhunter, oficina Concepción) | A | Borrador creado |
+| 2026-09-27 | Cámara de Comercio de Concepción | secretaria@camaradecomercioconcepcion.cl | Candidatura espontánea (gremio empresarial, red de empresas socias) | A | Borrador creado |
+| 2026-09-27 | Municipalidad de Florida — Dirección de Administración y Finanzas | lverap@muniflorida.cl | Candidatura espontánea (jefatura administrativa-financiera) | A | Borrador creado |
+| 2026-09-27 | Deloitte Concepción | concepcionchile@deloitte.com | Candidatura espontánea (auditoría/control de gestión, Big 4 oficina Concepción) | A | Borrador creado |
+
+| 2026-09-27 | SENCE Biobío — Oficina de Partes | opartBiobio@Sence.cl | Candidatura espontánea (servicio público, foco semanal Concepción/Biobío) | A | Borrador creado |
+| 2026-09-27 | SAG — Dirección Regional Biobío | contacto.biobio@sag.gob.cl | Candidatura espontánea (servicio público regional) | A | Borrador creado |
+| 2026-09-27 | Universidad Católica de la Santísima Concepción (UCSC) — Unidad de Contratación y Registro | lasenjo@ucsc.cl | Candidatura espontánea (institución de educación superior) | A | Borrador creado |
+| 2026-09-27 | INE — Oficina Concepción/Biobío | ine.concepcion@ine.gob.cl | Candidatura espontánea (servicio público estadístico) | A | Borrador creado |
+| 2026-09-27 | Seremi de Obras Públicas (MOP) Región del Biobío | opartes.biobio@mop.gov.cl | Candidatura espontánea (servicio público regional, correo general de derivación) | A | Borrador creado |
+| 2026-09-27 | INACAP Concepción-Talcahuano — Jefatura de Tesorería | mmora@inacap.cl | Candidatura espontánea (institución de educación superior, área financiera) | A | Borrador creado |
+| 2026-09-27 | Corporación de Asistencia Judicial del Biobío (CAJ Biobío) | oirs@cajbiobio.cl | Candidatura espontánea (servicio público, correo OIRS de derivación) | A | Borrador creado |
+
 *(Desde acá, cada sesión de la tarea programada agrega sus filas nuevas)*
 
 ---
@@ -188,4 +208,4 @@ IMPORTANTE:
   concurso, no envío directo de correo) — solo se cubre RRHH de servicios públicos con
   candidatura espontánea directa.
 
-*Última actualización: 2026-09-23*
+*Última actualización: 2026-09-27*
